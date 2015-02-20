@@ -83,10 +83,6 @@ PATCHRESOLVE = "noop"
 SSTATE_DIR = "${SSTATE_DIR}"
 DL_DIR = "${DL_DIR}"
 INHERIT += "rm_work"
-PREFERRED_VERSION_rpm = "4.11.2"
-PREFERRED_VERSION_rpm-native = "4.11.2"
-RPMROOTFSDEPENDS_remove = "rpmresolve-native:do_populate_sysroot"
-RDEPENDS_python3-modules_remove = "python3-2to3"
 EOF
     mv ${localconf}.tmp ${localconf}
 fi
