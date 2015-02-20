@@ -1,0 +1,8 @@
+FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+SRC_URI += "file://kvm.cfg"
+SRC_URI += "file://uinput.cfg"
+SRC_URI += "file://drm.cfg"
+SRC_URI += "file://9p.cfg"
+SRC_URI += "file://tmpfs.cfg"
+SRC_URI += "file://fhandle.cfg"
+PRINC = "7"

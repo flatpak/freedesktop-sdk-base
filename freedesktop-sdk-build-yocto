@@ -1,0 +1,101 @@
+#!/bin/bash
+# Copyright (C) 2015 Alexander Larsson <alexl@redhat.com>
+# Copyright (C) 2012 Colin Walters <walters@verbum.org>
+# Copyright (C) 2012 Adrian Perez <aperez@igalia.com>
+#
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2 of the License, or (at your option) any later version.
+#
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the
+# Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+# Boston, MA 02111-1307, USA.
+
+set -e
+umask 022
+
+die () {
+    echo "$*" 1>&2
+    exit 1
+}
+
+usage () {
+    echo "$0: SRCDIR WORKDIR ARCHITECTURE"
+}
+
+srcdir=$1
+test -n "${srcdir}" || (usage; exit 1)
+workdir=$2
+test -n "${workdir}" || (usage; exit 1)
+architecture=$3
+test -n "${architecture}" || (usage; exit 1)
+
+. "${srcdir}/yocto/oe-init-build-env" "${workdir}/${architecture}"
+
+LAYERNAMES=$(cat ${srcdir}/LAYERS)
+LAYERS=""
+for layername in ${LAYERNAMES}; do
+    LAYERS="${LAYERS} \${OSTREE_SRCDIR}/${layername}"
+done
+
+SSTATE_DIR="${workdir}/sstate-cache"
+DL_DIR="${workdir}/downloads"
+
+cat > ${workdir}/${architecture}/conf/bblayers.conf <<EOF
+# LAYER_CONF_VERSION is increased each time build/conf/bblayers.conf
+# changes incompatibly
+LCONF_VERSION = "6"
+
+BBPATH = "\${TOPDIR}"
+BBFILES ?= ""
+
+OSTREE_SRCDIR = "${srcdir}"
+BBLAYERS ?= "${LAYERS}"
+EOF
+
+case "$architecture" in
+    i686) MACHINE="atom-pc";;
+    x86_64) MACHINE="qemux86-64";;
+    *) echo "Error: Unhandled architecture '$architecture'"; exit 1;;
+esac
+
+mkdir -p ${workdir}/${architecture}/conf
+localconf=${workdir}/${architecture}/conf/local.conf
+if ! grep -q "DISTRO.*freedesktop" ${localconf}; then
+    numcpus=$(( $(getconf _NPROCESSORS_ONLN) / 2 + 1 ))
+    cat > ${localconf}.tmp <<EOF
+PARALLEL_MAKE = "-j ${numcpus}"
+BB_NUMBER_THREADS = "${numcpus}"
+LAYER_CONF_VERSION = "6"
+CONF_VERSION = "1"
+MACHINE = "${MACHINE}"
+DISTRO = "freedesktop"
+USER_CLASSES = ""
+PACKAGE_CLASSES = "package_rpm"
+PATCHRESOLVE = "noop"
+SSTATE_DIR = "${SSTATE_DIR}"
+DL_DIR = "${DL_DIR}"
+INHERIT += "rm_work"
+PREFERRED_VERSION_rpm = "4.11.2"
+PREFERRED_VERSION_rpm-native = "4.11.2"
+RPMROOTFSDEPENDS_remove = "rpmresolve-native:do_populate_sysroot"
+RDEPENDS_python3-modules_remove = "python3-2to3"
+EOF
+    mv ${localconf}.tmp ${localconf}
+fi
+
+IMAGEDIR=${workdir}/${architecture}/images
+mkdir -p "${IMAGEDIR}"
+
+bitbake freedesktop-contents-{sdk,platform}
+
+for basetype in sdk platform; do
+    ln -sf ${workdir}/${architecture}/tmp-glibc/deploy/images/${MACHINE}/freedesktop-contents-${basetype}-${MACHINE}.tar.gz images/freedesktop-contents-${basetype}-${architecture}.tar.gz
+done
