@@ -5,3 +5,8 @@ FILES_${PN}-lang="${libdir}/python3.3/lib-dynload/_bisect.*.so ${libdir}/python3
 FILES_${PN}-numbers="${libdir}/python3.3/decimal.* ${libdir}/python3.3/numbers.* ${libdir}/python3.3/lib-dynload/_decimal.*.so"
 FILES_${PN}-pickle="${libdir}/python3.3/pickle.* ${libdir}/python3.3/shelve.* ${libdir}/python3.3/lib-dynload/cPickle.*.so ${libdir}/python3.3/pickletools.* ${libdir}/python3.3/lib-dynload/_pickle.*.so"
 FILES_${PN}-subprocess="${libdir}/python3.3/subprocess.* ${libdir}/python3.3/lib-dynload/_posixsubprocess.*.so"
+
+FILESEXTRAPATHS_append := ":${THISDIR}/${PN}"
+SRC_URI += "\
+        file://999-distutils-fix-unset-env.patch \
+        "
