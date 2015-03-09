@@ -63,6 +63,7 @@ RDEPENDS_${PN} += "     \
          python3-modules \
          python3-misc \
          python-pyparsing \
+         python-mako \
          \
          gdbm-dev \
          gettext-dev \
