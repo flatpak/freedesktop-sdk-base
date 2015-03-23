@@ -10,4 +10,4 @@ all: images
 $(IMAGES)/freedesktop-base-contents-sdk-$(ARCH).tar.gz $(IMAGES)/freedesktop-base-contents-platform-$(ARCH).tar.gz images:
 	git submodule update --init
 	mkdir -p build/$(ARCH)
-	./freedesktop-sdk-build-yocto ${srcdir}/ ${builddir}/build/ $(ARCH)
+	./freedesktop-sdk-build-yocto ${srcdir}/ ${builddir}/build/ $(ARCH) `git rev-parse HEAD`

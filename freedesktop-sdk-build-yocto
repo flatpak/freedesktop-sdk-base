@@ -36,6 +36,8 @@ workdir=$2
 test -n "${workdir}" || (usage; exit 1)
 architecture=$3
 test -n "${architecture}" || (usage; exit 1)
+HASH=$4
+test -n "${HASH}" || (usage; exit 1)
 
 . "${srcdir}/yocto/oe-init-build-env" "${workdir}/${architecture}"
 
@@ -93,5 +95,5 @@ mkdir -p "${IMAGEDIR}"
 bitbake freedesktop-contents-{sdk,platform}
 
 for basetype in sdk platform; do
-    ln -sf ${workdir}/${architecture}/tmp-glibc/deploy/images/${MACHINE}/freedesktop-contents-${basetype}-${MACHINE}.tar.gz images/freedesktop-contents-${basetype}-${architecture}.tar.gz
+    ln -sf ${workdir}/${architecture}/tmp-glibc/deploy/images/${MACHINE}/freedesktop-contents-${basetype}-${MACHINE}.tar.gz images/freedesktop-contents-${basetype}-${architecture}-${HASH}.tar.gz
 done
