@@ -39,6 +39,9 @@ test -n "${architecture}" || (usage; exit 1)
 HASH=$4
 test -n "${HASH}" || (usage; exit 1)
 
+IMAGEDIR=${srcdir}/images/${architecture}
+mkdir -p $IMAGEDIR
+
 . "${srcdir}/yocto/oe-init-build-env" "${workdir}/${architecture}"
 
 LAYERNAMES=$(cat ${srcdir}/LAYERS)
@@ -89,11 +92,9 @@ EOF
     mv ${localconf}.tmp ${localconf}
 fi
 
-IMAGEDIR=${workdir}/${architecture}/images
-mkdir -p "${IMAGEDIR}"
-
 bitbake freedesktop-contents-{sdk,platform}
+rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
 for basetype in sdk platform; do
-    ln -sf ${workdir}/${architecture}/tmp-glibc/deploy/images/${MACHINE}/freedesktop-contents-${basetype}-${MACHINE}.tar.gz images/freedesktop-contents-${basetype}-${architecture}-${HASH}.tar.gz
+    ln -f ${workdir}/${architecture}/tmp-glibc/deploy/images/${MACHINE}/freedesktop-contents-${basetype}-${MACHINE}.tar.gz $IMAGEDIR/freedesktop-contents-${basetype}-${architecture}-${HASH}.tar.gz
 done

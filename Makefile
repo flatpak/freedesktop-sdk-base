@@ -3,11 +3,13 @@ builddir = $(CURDIR)
 
 NULL=
 ARCH=x86_64
-IMAGES=build/$(ARCH)/images
+IMAGEDIR=images/$(ARCH)
+HASH:=$(shell git rev-parse HEAD)
+IMAGES=$(IMAGEDIR)/freedesktop-base-contents-sdk-$(ARCH)-$(HASH).tar.gz $(IMAGEDIR)/freedesktop-base-contents-platform-$(ARCH)-$(HASH).tar.gz
 
-all: images
+all: $(IMAGES)
 
-$(IMAGES)/freedesktop-base-contents-sdk-$(ARCH).tar.gz $(IMAGES)/freedesktop-base-contents-platform-$(ARCH).tar.gz images:
+ $(IMAGES) allimages:
 	git submodule update --init
 	mkdir -p build/$(ARCH)
-	./freedesktop-sdk-build-yocto ${srcdir}/ ${builddir}/build/ $(ARCH) `git rev-parse HEAD`
+	./freedesktop-sdk-build-yocto $(srcdir)/ $(builddir)/build/ $(ARCH) $(HASH)
