@@ -1,0 +1,13 @@
+diff -up rpm-4.11.2/scripts/check-rpaths-worker.self_rpath rpm-4.11.2/scripts/check-rpaths-worker
+--- rpm-4.11.2/scripts/check-rpaths-worker.self_rpath	2015-03-27 10:35:28.096079208 +0100
++++ rpm-4.11.2/scripts/check-rpaths-worker	2015-03-27 10:36:00.209613179 +0100
+@@ -120,6 +120,9 @@ for i; do
+ 	        (/lib64/*|/usr/lib64/*|/usr/X11R6/lib64/*|/usr/local/lib64/*)
+ 		    badness=0;;
+ 
++	        (/self/lib/*|/self/lib)
++		    badness=0;;
++
+ 		(\$ORIGIN|\${ORIGINX}|\$ORIGIN/*|\${ORIGINX}/*)
+ 		    test $allow_ORIGIN -eq 0 && badness=8 || {
+ 			badness=0
