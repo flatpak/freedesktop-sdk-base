@@ -27,6 +27,7 @@ RDEPENDS_${PN} += "\
          libatomics-ops \
          popt \
          util-linux-libuuid \
+         libpcre \
          \
          acl \
          attr \
