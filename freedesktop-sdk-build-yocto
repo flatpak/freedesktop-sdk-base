@@ -96,5 +96,5 @@ bitbake freedesktop-contents-{sdk,platform}
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
 for basetype in sdk platform; do
-    ln -f ${workdir}/${architecture}/tmp-glibc/deploy/images/${MACHINE}/freedesktop-contents-${basetype}-${MACHINE}.tar.gz $IMAGEDIR/freedesktop-contents-${basetype}-${architecture}-${HASH}.tar.gz
+    cp -f ${workdir}/${architecture}/tmp-glibc/deploy/images/${MACHINE}/freedesktop-contents-${basetype}-${MACHINE}.tar.gz $IMAGEDIR/freedesktop-contents-${basetype}-${architecture}-${HASH}.tar.gz
 done
