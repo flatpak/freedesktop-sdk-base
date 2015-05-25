@@ -5,7 +5,7 @@ diff -up rpm-4.11.2/scripts/check-rpaths-worker.self_rpath rpm-4.11.2/scripts/ch
  	        (/lib64/*|/usr/lib64/*|/usr/X11R6/lib64/*|/usr/local/lib64/*)
  		    badness=0;;
  
-+	        (/self/lib/*|/self/lib)
++	        (/app/lib/*|/app/lib)
 +		    badness=0;;
 +
  		(\$ORIGIN|\${ORIGINX}|\$ORIGIN/*|\${ORIGINX}/*)
