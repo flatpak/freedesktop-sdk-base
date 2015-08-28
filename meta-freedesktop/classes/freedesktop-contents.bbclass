@@ -206,7 +206,9 @@ EOF
             path=`grep "${prio}$" $alt | tail -n 1 | sed 's/ [^ ]*$//'`
             path_basename=`basename $path`
             if [ "${path_basename/$name.}" != "$path_basename" ] ; then
-               mv -f ${IMAGE_ROOTFS}/$path ${IMAGE_ROOTFS}/$link
+               if [ -f "${IMAGE_ROOTFS}/$path" ] ; then
+                  mv -f "${IMAGE_ROOTFS}/$path" "${IMAGE_ROOTFS}/$link"
+               fi
             fi
         done
 
