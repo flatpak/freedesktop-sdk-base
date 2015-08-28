@@ -10,6 +10,6 @@ IMAGES=$(IMAGEDIR)/freedesktop-base-contents-sdk-$(ARCH)-$(HASH).tar.gz $(IMAGED
 all: $(IMAGES)
 
  $(IMAGES) allimages:
-	git submodule update --init
+	#git submodule update --init
 	mkdir -p build/$(ARCH)
 	./freedesktop-sdk-build-yocto $(srcdir)/ $(builddir)/build/ $(ARCH) $(HASH)

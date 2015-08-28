@@ -52,7 +52,6 @@ RDEPENDS_${PN} += "     \
          valgrind \
          valgrind-dev \
          \
-         ruby \
          libxml-parser-perl \
          libxml-parser-perl-dev \
          perl-modules \
@@ -62,7 +61,6 @@ RDEPENDS_${PN} += "     \
          python3-dev \
          python3-modules \
          python3-misc \
-         python-pyparsing \
          python-mako \
          \
          gdbm-dev \
@@ -95,7 +93,7 @@ RDEPENDS_${PN} += "     \
          libpng-dev \
          libsndfile1-dev \
          libvorbis-dev \
-         libwebp-dev \
+         libvpx-dev \
          libtheora-dev \
          tiff-dev \
          flac-dev \

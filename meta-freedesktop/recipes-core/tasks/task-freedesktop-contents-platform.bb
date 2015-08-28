@@ -44,7 +44,6 @@ RDEPENDS_${PN} += "\
          krb5 \
          less \
          ncurses-terminfo-base \
-         nss-altfiles \
          sed \
          update-alternatives-cworth \
          which \
@@ -69,7 +68,7 @@ RDEPENDS_${PN} += "\
          libpng \
          libsndfile1 \
          libvorbis \
-         libwebp \
+         libvpx \
          libtheora \
          tiff \
          libflac \
