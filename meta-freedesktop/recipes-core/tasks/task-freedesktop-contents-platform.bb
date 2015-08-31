@@ -69,6 +69,8 @@ RDEPENDS_${PN} += "\
          libsndfile1 \
          libvorbis \
          libvpx \
+         libwebp \
+         giflib \
          libtheora \
          tiff \
          libflac \
