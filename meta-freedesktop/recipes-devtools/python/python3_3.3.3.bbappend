@@ -9,6 +9,7 @@ FILES_${PN}-subprocess="${libdir}/python3.3/subprocess.* ${libdir}/python3.3/lib
 FILESEXTRAPATHS_append := ":${THISDIR}/${PN}"
 SRC_URI += "\
         file://999-distutils-fix-unset-env.patch \
+        file://usercustomize.py \
         "
 
 py_package_preprocess () {
@@ -18,4 +19,8 @@ py_package_preprocess () {
 	sed -i -e 's:--sysroot=${STAGING_DIR_TARGET}::g' -e s:'--with-libtool-sysroot=${STAGING_DIR_TARGET}'::g \
 		${PKGD}/${libdir}/python${PYTHON_MAJMIN}/config/Makefile \
 		${PKGD}/${libdir}/python${PYTHON_MAJMIN}/_sysconfigdata.py
+}
+
+do_install_append() {
+        install -m 0755 ${WORKDIR}/usercustomize.py ${D}${libdir}/python3.3/usercustomize.py
 }

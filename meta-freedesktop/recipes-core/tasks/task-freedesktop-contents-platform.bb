@@ -91,7 +91,6 @@ RDEPENDS_${PN} += "\
          gdbm \
          lcms \
          \
-         python-dev \
          python-modules \
          python-misc \
          python3-modules \
