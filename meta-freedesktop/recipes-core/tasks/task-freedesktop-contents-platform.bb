@@ -35,6 +35,7 @@ RDEPENDS_${PN} += "\
          base-passwd \
          bash \
          coreutils \
+         procps \
          cpio \
          cracklib \
          curl \
