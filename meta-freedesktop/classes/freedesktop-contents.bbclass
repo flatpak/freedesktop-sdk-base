@@ -158,6 +158,12 @@ EOF
 	# Remove su; we only support pkexec
 	rm -f ${IMAGE_ROOTFS}/bin/su
 
+	# /lib64/ld-linux-x86-64.so.2 is part of the x86-64 ABI that at least llvm requires
+	if [ "${TARGET_ARCH}" = "x86_64" ];then
+	  mkdir -p ${IMAGE_ROOTFS}/usr/lib64
+	  ln -s /usr/lib/ld-linux-x86-64.so.2 ${IMAGE_ROOTFS}/usr/lib64/ld-linux-x86-64.so.2
+	fi
+
 	# Remove all .la files
 	find ${IMAGE_ROOTFS}/usr/lib -name \*.la -delete
 
