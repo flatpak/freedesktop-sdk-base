@@ -62,6 +62,8 @@ RDEPENDS_${PN} += "     \
          python3-modules \
          python3-misc \
          python-mako \
+         python3-pip \
+         python-pip \
          ruby \
          \
          gdbm-dev \
