@@ -48,6 +48,8 @@ RDEPENDS_${PN} += "\
          sed \
          update-alternatives-cworth \
          which \
+         util-linux-uuidgen \
+         util-linux-getopt \
          \
          bzip2 \
          gzip \
