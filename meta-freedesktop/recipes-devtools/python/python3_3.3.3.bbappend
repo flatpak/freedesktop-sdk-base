@@ -9,6 +9,7 @@ FILES_${PN}-subprocess="${libdir}/python3.3/subprocess.* ${libdir}/python3.3/lib
 FILESEXTRAPATHS_append := ":${THISDIR}/${PN}"
 SRC_URI += "\
         file://999-distutils-fix-unset-env.patch \
+        file://setup.py-find-libraries-in-staging-dirs.patch \
         file://usercustomize.py \
         "
 
