@@ -1,4 +1,5 @@
 from distutils import sysconfig
 import sys
+import site
 
-sys.path.insert(1, sysconfig.get_python_lib(prefix="/app"))
+site.addsitedir(sysconfig.get_python_lib(prefix='/app'))
