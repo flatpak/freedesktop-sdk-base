@@ -28,6 +28,7 @@ RDEPENDS_${PN} += "\
          popt \
          util-linux-libuuid \
          libpcre \
+         libcomerr \
          \
          acl \
          attr \

@@ -51,6 +51,7 @@ RDEPENDS_${PN} += "     \
          texinfo \
          valgrind \
          valgrind-dev \
+         e2fsprogs-dev \
          \
          libxml-parser-perl \
          libxml-parser-perl-dev \
