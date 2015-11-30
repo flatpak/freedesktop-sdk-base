@@ -39,6 +39,7 @@ RDEPENDS_${PN} += "\
          procps \
          cpio \
          cracklib \
+         libcurl \
          curl \
          findutils \
          gawk \

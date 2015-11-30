@@ -76,6 +76,7 @@ RDEPENDS_${PN} += "     \
          libpcre-dev \
          \
          cracklib-dev \
+         libcurl-dev \
          curl-dev \
          db-dev \
          icu-dev \
