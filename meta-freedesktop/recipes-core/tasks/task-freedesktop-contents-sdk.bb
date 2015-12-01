@@ -52,6 +52,8 @@ RDEPENDS_${PN} += "     \
          valgrind \
          valgrind-dev \
          e2fsprogs-dev \
+         libgomp-dev \
+         libatomic-dev \
          \
          libxml-parser-perl \
          libxml-parser-perl-dev \

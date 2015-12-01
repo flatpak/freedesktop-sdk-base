@@ -24,6 +24,8 @@ RDEPENDS_${PN} += "\
          ncurses \
          nspr \
          gmp \
+         libgomp \
+         libatomic \
          libatomics-ops \
          popt \
          util-linux-libuuid \
