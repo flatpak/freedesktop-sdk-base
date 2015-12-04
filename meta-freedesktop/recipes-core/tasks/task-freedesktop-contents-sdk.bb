@@ -41,6 +41,7 @@ RDEPENDS_${PN} += "     \
          gettext \
          git \
          git-perltools \
+         git-bash-completion \
          gperf \
          intltool \
          ldd \
