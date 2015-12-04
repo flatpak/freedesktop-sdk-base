@@ -79,6 +79,7 @@ RDEPENDS_${PN} += "     \
          libpam-dev \
          libssp-dev \
          util-linux-libuuid-dev \
+         util-linux-bash-completion \
          libpcre-dev \
          \
          cracklib-dev \
