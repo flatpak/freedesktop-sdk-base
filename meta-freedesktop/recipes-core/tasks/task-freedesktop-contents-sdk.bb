@@ -54,6 +54,9 @@ RDEPENDS_${PN} += "     \
          e2fsprogs-dev \
          libgomp-dev \
          libatomic-dev \
+         openssh-ssh \
+         openssh-scp \
+         openssh-sftp \
          \
          libxml-parser-perl \
          libxml-parser-perl-dev \
