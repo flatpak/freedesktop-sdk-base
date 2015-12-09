@@ -58,6 +58,7 @@ RDEPENDS_${PN} += "     \
          openssh-ssh \
          openssh-scp \
          openssh-sftp \
+         perf \
          \
          libxml-parser-perl \
          libxml-parser-perl-dev \
