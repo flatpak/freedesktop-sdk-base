@@ -12,6 +12,7 @@ SRC_URI += "\
         file://setup.py-find-libraries-in-staging-dirs.patch \
         file://usercustomize.py \
         "
+SRC_URI_remove = "file://04-default-is-optimized.patch"
 
 py_package_preprocess () {
 	# copy back the old Makefile to fix target package
