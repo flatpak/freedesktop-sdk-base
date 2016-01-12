@@ -211,7 +211,8 @@ EOF
             prio=`sed -ne "1!p" $alt | sed -e "s/\(.*\) \(.*\)/\2 \1/g" | sort -nr | head -n 1 | sed 's/ [^ ]*$//'`
             path=`grep "${prio}$" $alt | tail -n 1 | sed 's/ [^ ]*$//'`
             path_basename=`basename $path`
-            if [ "${path_basename/$name.}" != "$path_basename" ] ; then
+            package=`echo $path_basename | sed s/$name.//`
+            if [ "$name.$package" = "$path_basename" ] ; then
                if [ -f "${IMAGE_ROOTFS}/$path" ] ; then
                   mv -f "${IMAGE_ROOTFS}/$path" "${IMAGE_ROOTFS}/$link"
                fi
