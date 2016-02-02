@@ -59,6 +59,9 @@ RDEPENDS_${PN} += "     \
          openssh-scp \
          openssh-sftp \
          perf \
+         sgml-common \
+         docbook-xml-dtd4 \
+         docbook-xsl-stylesheets \
          \
          libxml-parser-perl \
          libxml-parser-perl-dev \
