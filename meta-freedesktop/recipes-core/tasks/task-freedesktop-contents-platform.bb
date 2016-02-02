@@ -68,6 +68,7 @@ RDEPENDS_${PN} += "\
          libgcrypt \
          libssl \
          libtasn1 \
+         gpgme \
          \
          libexif \
          libjpeg-turbo \

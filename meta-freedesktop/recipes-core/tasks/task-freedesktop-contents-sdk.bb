@@ -133,6 +133,9 @@ RDEPENDS_${PN} += "     \
          libtasn1-dev \
          nettle-dev \
          openssl-dev \
+         libassuan-dev \
+         gpgme-dev \
+         gnupg \
          \
          cyrus-sasl-dev \
          elfutils-binutils \
