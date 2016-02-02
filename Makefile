@@ -27,7 +27,7 @@ repo:
 sdk: metadata.sdk $(SDK_IMAGE)
 	rm -rf sdk
 	mkdir sdk
-	(cd sdk; tar --transform 's,^./usr,files,S' --transform 's,^./etc,files/etc,S' --exclude="./[!eu]*" -xvf ../$(SDK_IMAGE))
+	(cd sdk; tar --transform 's,^./usr,files,S' --transform 's,^./etc,files/etc,S' --exclude="./[!eu]*" -xvf ../$(SDK_IMAGE)  > /dev/null)
 	cp metadata.sdk sdk/metadata
 
 commit-sdk: sdk repo
@@ -37,7 +37,7 @@ commit-sdk: sdk repo
 platform: metadata.platform $(PLATFORM_IMAGE)
 	rm -rf platform
 	mkdir platform
-	(cd platform; tar --transform 's,^./usr,files,S' --transform 's,^./etc,files/etc,S' --exclude="./[!eu]*" -xvf ../$(PLATFORM_IMAGE))
+	(cd platform; tar --transform 's,^./usr,files,S' --transform 's,^./etc,files/etc,S' --exclude="./[!eu]*" -xvf ../$(PLATFORM_IMAGE)  > /dev/null)
 	cp metadata.platform platform/metadata
 
 commit-platform: platform
