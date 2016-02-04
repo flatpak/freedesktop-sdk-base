@@ -54,7 +54,9 @@ RDEPENDS_${PN} += "     \
          valgrind-dev \
          e2fsprogs-dev \
          libgomp-dev \
+         libgomp-staticdev \
          libatomic-dev \
+         libatomic-staticdev \
          openssh-ssh \
          openssh-scp \
          openssh-sftp \
@@ -82,6 +84,7 @@ RDEPENDS_${PN} += "     \
          libffi-dev \
          libpam-dev \
          libssp-dev \
+         libssp-staticdev \
          util-linux-libuuid-dev \
          util-linux-bash-completion \
          libpcre-dev \
@@ -98,6 +101,7 @@ RDEPENDS_${PN} += "     \
          libcap-dev \
          libsqlite3-dev \
          libstdc++-dev \
+         libstdc++-staticdev \
          ncurses-dev \
          nspr-dev \
          nss-dev \
