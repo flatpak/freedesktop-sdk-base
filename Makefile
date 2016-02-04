@@ -8,7 +8,7 @@ HASH:=$(shell git rev-parse HEAD)
 SDK_IMAGE=$(IMAGEDIR)/freedesktop-contents-sdk-$(ARCH)-$(HASH).tar.gz
 PLATFORM_IMAGE=$(IMAGEDIR)/freedesktop-contents-platform-$(ARCH)-$(HASH).tar.gz
 IMAGES= $(SDK_IMAGE) $(PLATFORM_IMAGE)
-VERSION=1.2
+VERSION=1.4
 
 all: $(IMAGES)
 
