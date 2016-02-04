@@ -12,7 +12,6 @@ IMAGE_FEATURES += "package-management"
 PACKAGE_INSTALL += "\
 		task-freedesktop-contents-platform \
 		task-freedesktop-contents-sdk \
-		libltdl-dev \
 		libgcc-dev \
 		glibc-dev \
 		glibc-dbg \

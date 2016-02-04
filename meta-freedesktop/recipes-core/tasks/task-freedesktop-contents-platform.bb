@@ -26,7 +26,7 @@ RDEPENDS_${PN} += "\
          gmp \
          libgomp \
          libatomic \
-         libatomics-ops \
+         libatomic-ops \
          popt \
          util-linux-libuuid \
          libpcre \
@@ -865,25 +865,28 @@ RDEPENDS_${PN} += "\
          glibc-binary-localedata-zh-sg \
          glibc-binary-localedata-zh-tw \
          glibc-binary-localedata-zu-za \
-         iso-codes-locale-aa \
          iso-codes-locale-af \
          iso-codes-locale-am \
          iso-codes-locale-ar \
+         iso-codes-locale-as \
+         iso-codes-locale-ast \
          iso-codes-locale-az \
          iso-codes-locale-be \
          iso-codes-locale-bg \
          iso-codes-locale-bn \
+         iso-codes-locale-bn-in \
          iso-codes-locale-br \
          iso-codes-locale-bs \
          iso-codes-locale-byn \
          iso-codes-locale-ca \
+         iso-codes-locale-crh \
          iso-codes-locale-cs \
          iso-codes-locale-cy \
          iso-codes-locale-da \
          iso-codes-locale-de \
-         iso-codes-locale-dv \
          iso-codes-locale-dz \
          iso-codes-locale-el \
+         iso-codes-locale-en \
          iso-codes-locale-eo \
          iso-codes-locale-es \
          iso-codes-locale-et \
@@ -896,28 +899,24 @@ RDEPENDS_${PN} += "\
          iso-codes-locale-gez \
          iso-codes-locale-gl \
          iso-codes-locale-gu \
-         iso-codes-locale-gv \
          iso-codes-locale-haw \
          iso-codes-locale-he \
          iso-codes-locale-hi \
          iso-codes-locale-hr \
          iso-codes-locale-hu \
          iso-codes-locale-hy \
+         iso-codes-locale-ia \
          iso-codes-locale-id \
          iso-codes-locale-is \
          iso-codes-locale-it \
-         iso-codes-locale-iu \
          iso-codes-locale-ja \
          iso-codes-locale-ka \
          iso-codes-locale-kk \
-         iso-codes-locale-kl \
          iso-codes-locale-km \
          iso-codes-locale-kn \
          iso-codes-locale-ko \
          iso-codes-locale-kok \
          iso-codes-locale-ku \
-         iso-codes-locale-kw \
-         iso-codes-locale-ky \
          iso-codes-locale-lt \
          iso-codes-locale-lv \
          iso-codes-locale-mi \
@@ -931,10 +930,9 @@ RDEPENDS_${PN} += "\
          iso-codes-locale-ne \
          iso-codes-locale-nl \
          iso-codes-locale-nn \
-         iso-codes-locale-no \
          iso-codes-locale-nso \
          iso-codes-locale-oc \
-         iso-codes-locale-om \
+         iso-codes-locale-or \
          iso-codes-locale-pa \
          iso-codes-locale-pl \
          iso-codes-locale-ps \
@@ -943,16 +941,15 @@ RDEPENDS_${PN} += "\
          iso-codes-locale-ro \
          iso-codes-locale-ru \
          iso-codes-locale-rw \
-         iso-codes-locale-sa \
-         iso-codes-locale-sid \
+         iso-codes-locale-si \
          iso-codes-locale-sk \
          iso-codes-locale-sl \
          iso-codes-locale-so \
          iso-codes-locale-sq \
          iso-codes-locale-sr \
+         iso-codes-locale-sr+latin \
          iso-codes-locale-sv \
          iso-codes-locale-sw \
-         iso-codes-locale-syr \
          iso-codes-locale-ta \
          iso-codes-locale-te \
          iso-codes-locale-th \
@@ -962,9 +959,9 @@ RDEPENDS_${PN} += "\
          iso-codes-locale-tl \
          iso-codes-locale-tr \
          iso-codes-locale-tt \
+         iso-codes-locale-tt+iqtelif \
+         iso-codes-locale-ug \
          iso-codes-locale-uk \
-         iso-codes-locale-ur \
-         iso-codes-locale-uz \
          iso-codes-locale-ve \
          iso-codes-locale-vi \
          iso-codes-locale-wa \

@@ -90,13 +90,12 @@ RDEPENDS_${PN} += "     \
          libpcre-dev \
          \
          cracklib-dev \
-         libcurl-dev \
          curl-dev \
          db-dev \
          icu-dev \
          krb5-dev \
-         libacl-dev \
-         libattr-dev \
+         acl-dev \
+         attr-dev \
          libcap-bin \
          libcap-dev \
          libsqlite3-dev \
@@ -120,13 +119,10 @@ RDEPENDS_${PN} += "     \
          tiff-dev \
          flac-dev \
          speex-dev \
-         speex-bin \
          libsamplerate0-dev \
          \
          bzip2-dev \
          libarchive-dev \
-         libbz2-dev \
-         liblzma-dev \
          xz-dev \
          zlib-dev \
          \
@@ -149,11 +145,8 @@ RDEPENDS_${PN} += "     \
          iso-codes-dev \
          json-c-dev \
          lcms-dev \
-         libasm-dev \
-         libatomics-ops-dev \
-         libdw-dev \
-         libelf-dev \
-         libgcov-dev \
+         libatomic-ops-dev \
+         libgcc-dev \
          libxml2-dev \
          libxml2-python \
          libxslt-bin \
@@ -181,6 +174,9 @@ RDEPENDS_${PN} += "     \
          perl-module-autodie-exception \
          perl-module-autodie-exception-system \
          perl-module-autodie-hints \
+         perl-module-autodie-scope-guard \
+         perl-module-autodie-scope-guardstack \
+         perl-module-autodie-scopeutil \
          perl-module-autodie-skip \
          perl-module-autoloader \
          perl-module-autosplit \
@@ -195,20 +191,22 @@ RDEPENDS_${PN} += "     \
          perl-module-bignum \
          perl-module-bigrat \
          perl-module-blib \
+         perl-module-b-op-private \
          perl-module-b-showlex \
          perl-module-b-terse \
-         perl-module-build \
          perl-module-b-xref \
          perl-module-bytes \
+         perl-module-bytes-heavy \
          perl-module-carp \
          perl-module-carp-heavy \
-         perl-module-charnames \
          perl-module--charnames \
+         perl-module-charnames \
          perl-module-class-struct \
          perl-module-compress-raw-bzip2 \
          perl-module-compress-raw-zlib \
          perl-module-compress-zlib \
          perl-module-config-extensions \
+         perl-module-config-git \
          perl-module-config-perl-v \
          perl-module-constant \
          perl-module-corelist \
@@ -233,14 +231,18 @@ RDEPENDS_${PN} += "     \
          perl-module-digest-md5 \
          perl-module-digest-sha \
          perl-module-dirhandle \
+         perl-module-dumpvalue \
+         perl-module-dumpvar \
          perl-module-dynaloader \
          perl-module-encode \
          perl-module-encode-alias \
          perl-module-encode-byte \
+         perl-module-encode-changes \
          perl-module-encode-cjkconstants \
          perl-module-encode-cn \
          perl-module-encode-cn-hz \
          perl-module-encode-config \
+         perl-module-encode-configlocal-pm \
          perl-module-encode-ebcdic \
          perl-module-encode-encoder \
          perl-module-encode-encoding \
@@ -251,10 +253,14 @@ RDEPENDS_${PN} += "     \
          perl-module-encode-jp-jis7 \
          perl-module-encode-kr \
          perl-module-encode-kr-2022-kr \
+         perl-module-encode-makefile-pl \
          perl-module-encode-mime-header \
          perl-module-encode-mime-header-iso-2022-jp \
          perl-module-encode-mime-name \
+         perl-module-encode--pm \
+         perl-module-encode-readme \
          perl-module-encode-symbol \
+         perl-module-encode--t \
          perl-module-encode-tw \
          perl-module-encode-unicode \
          perl-module-encode-unicode-utf7 \
@@ -266,6 +272,72 @@ RDEPENDS_${PN} += "     \
          perl-module-experimental \
          perl-module-exporter \
          perl-module-exporter-heavy \
+         perl-module-extutils-cbuilder \
+         perl-module-extutils-cbuilder-base \
+         perl-module-extutils-cbuilder-platform-aix \
+         perl-module-extutils-cbuilder-platform-android \
+         perl-module-extutils-cbuilder-platform-cygwin \
+         perl-module-extutils-cbuilder-platform-darwin \
+         perl-module-extutils-cbuilder-platform-dec-osf \
+         perl-module-extutils-cbuilder-platform-os2 \
+         perl-module-extutils-cbuilder-platform-unix \
+         perl-module-extutils-cbuilder-platform-vms \
+         perl-module-extutils-cbuilder-platform-windows \
+         perl-module-extutils-cbuilder-platform-windows-bcc \
+         perl-module-extutils-cbuilder-platform-windows-gcc \
+         perl-module-extutils-cbuilder-platform-windows-msvc \
+         perl-module-extutils-command \
+         perl-module-extutils-command-mm \
+         perl-module-extutils-constant \
+         perl-module-extutils-constant-base \
+         perl-module-extutils-constant-proxysubs \
+         perl-module-extutils-constant-utils \
+         perl-module-extutils-constant-xs \
+         perl-module-extutils-embed \
+         perl-module-extutils-install \
+         perl-module-extutils-installed \
+         perl-module-extutils-liblist \
+         perl-module-extutils-liblist-kid \
+         perl-module-extutils-makemaker \
+         perl-module-extutils-makemaker-config \
+         perl-module-extutils-makemaker-locale \
+         perl-module-extutils-makemaker-version \
+         perl-module-extutils-makemaker-version-regex \
+         perl-module-extutils-makemaker-version-vpp \
+         perl-module-extutils-manifest \
+         perl-module-extutils-miniperl \
+         perl-module-extutils-mkbootstrap \
+         perl-module-extutils-mksymlists \
+         perl-module-extutils-mm \
+         perl-module-extutils-mm-aix \
+         perl-module-extutils-mm-any \
+         perl-module-extutils-mm-beos \
+         perl-module-extutils-mm-cygwin \
+         perl-module-extutils-mm-darwin \
+         perl-module-extutils-mm-dos \
+         perl-module-extutils-mm-macos \
+         perl-module-extutils-mm-nw5 \
+         perl-module-extutils-mm-os2 \
+         perl-module-extutils-mm-qnx \
+         perl-module-extutils-mm-unix \
+         perl-module-extutils-mm-uwin \
+         perl-module-extutils-mm-vms \
+         perl-module-extutils-mm-vos \
+         perl-module-extutils-mm-win32 \
+         perl-module-extutils-mm-win95 \
+         perl-module-extutils-my \
+         perl-module-extutils-packlist \
+         perl-module-extutils-parsexs \
+         perl-module-extutils-parsexs-constants \
+         perl-module-extutils-parsexs-countlines \
+         perl-module-extutils-parsexs-eval \
+         perl-module-extutils-parsexs-utilities \
+         perl-module-extutils-testlib \
+         perl-module-extutils-typemaps \
+         perl-module-extutils-typemaps-cmd \
+         perl-module-extutils-typemaps-inputmap \
+         perl-module-extutils-typemaps-outputmap \
+         perl-module-extutils-typemaps-type \
          perl-module-fatal \
          perl-module-fcntl \
          perl-module-feature \
@@ -292,6 +364,7 @@ RDEPENDS_${PN} += "     \
          perl-module-file-spec-win32 \
          perl-module-file-stat \
          perl-module-file-temp \
+         perl-module-filetest \
          perl-module-filter-simple \
          perl-module-filter-util-call \
          perl-module-findbin \
@@ -299,13 +372,14 @@ RDEPENDS_${PN} += "     \
          perl-module-getopt-std \
          perl-module-hash-util \
          perl-module-hash-util-fieldhash \
+         perl-module-http-tiny \
          perl-module-i18n-collate \
          perl-module-i18n-langinfo \
          perl-module-i18n-langtags \
          perl-module-i18n-langtags-detect \
          perl-module-i18n-langtags-list \
-         perl-module-inc-latest \
-         perl-module-inc-latest-private \
+         perl-module-if \
+         perl-module-integer \
          perl-module-io \
          perl-module-io-compress-adapter-bzip2 \
          perl-module-io-compress-adapter-deflate \
@@ -405,11 +479,16 @@ RDEPENDS_${PN} += "     \
          perl-module-memoize-anydbm-file \
          perl-module-memoize-expire \
          perl-module-memoize-expirefile \
+         perl-module-memoize-expiretest \
+         perl-module-memoize-ndbm-file \
          perl-module-memoize-sdbm-file \
          perl-module-memoize-storable \
+         perl-module-metadata \
+         perl-module-meta-notation \
          perl-module-mime-base64 \
          perl-module-mime-quotedprint \
          perl-module-mro \
+         perl-module-ndbm-file \
          perl-module-net-cmd \
          perl-module-net-config \
          perl-module-net-domain \
@@ -431,23 +510,31 @@ RDEPENDS_${PN} += "     \
          perl-module-net-time \
          perl-module-next \
          perl-module-o \
+         perl-module-odbm-file \
+         perl-module-ok \
          perl-module-opcode \
          perl-module-open \
          perl-module-ops \
          perl-module-overload \
          perl-module-overloading \
-         perl-module-package-constants \
+         perl-module-overload-numbers \
          perl-module-params-check \
          perl-module-parent \
+         perl-module-parse-cpan-meta \
+         perl-module-perl5db \
+         perl-module-perlfaq \
+         perl-module-perlio \
          perl-module-perlio-encoding \
          perl-module-perlio-mmap \
          perl-module-perlio-scalar \
          perl-module-perlio-via \
          perl-module-perlio-via-quotedprint \
+         perl-module-perl-ostype \
          perl-module-pod-checker \
          perl-module-pod-escapes \
          perl-module-pod-find \
          perl-module-pod-functions \
+         perl-module-pod-html \
          perl-module-pod-inputobjects \
          perl-module-pod-man \
          perl-module-pod-parselink \
@@ -464,6 +551,7 @@ RDEPENDS_${PN} += "     \
          perl-module-pod-perldoc-tortf \
          perl-module-pod-perldoc-toterm \
          perl-module-pod-perldoc-totext \
+         perl-module-pod-perldoc-totk \
          perl-module-pod-perldoc-toxml \
          perl-module-pod-plaintext \
          perl-module-pod-select \
@@ -473,6 +561,9 @@ RDEPENDS_${PN} += "     \
          perl-module-pod-simple-debug \
          perl-module-pod-simple-dumpastext \
          perl-module-pod-simple-dumpasxml \
+         perl-module-pod-simple-html \
+         perl-module-pod-simple-htmlbatch \
+         perl-module-pod-simple-htmllegacy \
          perl-module-pod-simple-linksection \
          perl-module-pod-simple-methody \
          perl-module-pod-simple-progress \
@@ -490,6 +581,7 @@ RDEPENDS_${PN} += "     \
          perl-module-pod-simple-transcode \
          perl-module-pod-simple-transcodedumb \
          perl-module-pod-simple-transcodesmart \
+         perl-module-pod-simple-xhtml \
          perl-module-pod-simple-xmloutstream \
          perl-module-pod-text \
          perl-module-pod-text-color \
@@ -508,6 +600,8 @@ RDEPENDS_${PN} += "     \
          perl-module-socket \
          perl-module-sort \
          perl-module-storable \
+         perl-module-subs \
+         perl-module-sub-util \
          perl-module-symbol \
          perl-module-sys-hostname \
          perl-module-sys-syslog \
@@ -560,12 +654,18 @@ RDEPENDS_${PN} += "     \
          perl-module-term-readline \
          perl-module-test \
          perl-module-test-builder \
+         perl-module-test-builder-io-scalar \
          perl-module-test-builder-module \
          perl-module-test-builder-tester \
          perl-module-test-builder-tester-color \
          perl-module-test-harness \
          perl-module-test-more \
          perl-module-test-simple \
+         perl-module-test-tester \
+         perl-module-test-tester-capture \
+         perl-module-test-tester-capturerunner \
+         perl-module-test-tester-delegate \
+         perl-module-test-use-ok \
          perl-module-text-abbrev \
          perl-module-text-balanced \
          perl-module-text-parsewords \
@@ -602,6 +702,88 @@ RDEPENDS_${PN} += "     \
          perl-module-unicode-collate-cjk-stroke \
          perl-module-unicode-collate-cjk-zhuyin \
          perl-module-unicode-collate-locale \
+         perl-module-unicode-collate-locale-af \
+         perl-module-unicode-collate-locale-ar \
+         perl-module-unicode-collate-locale-as \
+         perl-module-unicode-collate-locale-az \
+         perl-module-unicode-collate-locale-be \
+         perl-module-unicode-collate-locale-bg \
+         perl-module-unicode-collate-locale-bn \
+         perl-module-unicode-collate-locale-ca \
+         perl-module-unicode-collate-locale-cs \
+         perl-module-unicode-collate-locale-cy \
+         perl-module-unicode-collate-locale-da \
+         perl-module-unicode-collate-locale-de-phone \
+         perl-module-unicode-collate-locale-ee \
+         perl-module-unicode-collate-locale-eo \
+         perl-module-unicode-collate-locale-es \
+         perl-module-unicode-collate-locale-es-trad \
+         perl-module-unicode-collate-locale-et \
+         perl-module-unicode-collate-locale-fa \
+         perl-module-unicode-collate-locale-fi \
+         perl-module-unicode-collate-locale-fil \
+         perl-module-unicode-collate-locale-fi-phone \
+         perl-module-unicode-collate-locale-fo \
+         perl-module-unicode-collate-locale-fr \
+         perl-module-unicode-collate-locale-gu \
+         perl-module-unicode-collate-locale-ha \
+         perl-module-unicode-collate-locale-haw \
+         perl-module-unicode-collate-locale-hi \
+         perl-module-unicode-collate-locale-hr \
+         perl-module-unicode-collate-locale-hu \
+         perl-module-unicode-collate-locale-hy \
+         perl-module-unicode-collate-locale-ig \
+         perl-module-unicode-collate-locale-is \
+         perl-module-unicode-collate-locale-ja \
+         perl-module-unicode-collate-locale-kk \
+         perl-module-unicode-collate-locale-kl \
+         perl-module-unicode-collate-locale-kn \
+         perl-module-unicode-collate-locale-ko \
+         perl-module-unicode-collate-locale-kok \
+         perl-module-unicode-collate-locale-ln \
+         perl-module-unicode-collate-locale-lt \
+         perl-module-unicode-collate-locale-lv \
+         perl-module-unicode-collate-locale-mk \
+         perl-module-unicode-collate-locale-ml \
+         perl-module-unicode-collate-locale-mr \
+         perl-module-unicode-collate-locale-mt \
+         perl-module-unicode-collate-locale-nb \
+         perl-module-unicode-collate-locale-nn \
+         perl-module-unicode-collate-locale-nso \
+         perl-module-unicode-collate-locale-om \
+         perl-module-unicode-collate-locale-or \
+         perl-module-unicode-collate-locale-pa \
+         perl-module-unicode-collate-locale-pl \
+         perl-module-unicode-collate-locale-ro \
+         perl-module-unicode-collate-locale-ru \
+         perl-module-unicode-collate-locale-sa \
+         perl-module-unicode-collate-locale-se \
+         perl-module-unicode-collate-locale-si \
+         perl-module-unicode-collate-locale-si-dict \
+         perl-module-unicode-collate-locale-sk \
+         perl-module-unicode-collate-locale-sl \
+         perl-module-unicode-collate-locale-sq \
+         perl-module-unicode-collate-locale-sr \
+         perl-module-unicode-collate-locale-sv \
+         perl-module-unicode-collate-locale-sv-refo \
+         perl-module-unicode-collate-locale-ta \
+         perl-module-unicode-collate-locale-te \
+         perl-module-unicode-collate-locale-th \
+         perl-module-unicode-collate-locale-tn \
+         perl-module-unicode-collate-locale-to \
+         perl-module-unicode-collate-locale-tr \
+         perl-module-unicode-collate-locale-uk \
+         perl-module-unicode-collate-locale-ur \
+         perl-module-unicode-collate-locale-vi \
+         perl-module-unicode-collate-locale-wae \
+         perl-module-unicode-collate-locale-wo \
+         perl-module-unicode-collate-locale-yo \
+         perl-module-unicode-collate-locale-zh \
+         perl-module-unicode-collate-locale-zh-big5 \
+         perl-module-unicode-collate-locale-zh-gb \
+         perl-module-unicode-collate-locale-zh-pin \
+         perl-module-unicode-collate-locale-zh-strk \
+         perl-module-unicode-collate-locale-zh-zhu \
          perl-module-unicode-normalize \
          perl-module-unicode-ucd \
          perl-module-unicore \
@@ -609,8 +791,10 @@ RDEPENDS_${PN} += "     \
          perl-module-user-grent \
          perl-module-user-pwent \
          perl-module-utf8 \
+         perl-module-utf8-heavy \
          perl-module-version \
          perl-module-version-regex \
          perl-module-version-vpp \
+         perl-module-vmsish \
          perl-module-xsloader \
 	 "
