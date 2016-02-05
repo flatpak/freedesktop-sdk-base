@@ -146,6 +146,7 @@ RDEPENDS_${PN} += "     \
          json-c-dev \
          lcms-dev \
          libatomic-ops-dev \
+         libatomic-ops-staticdev \
          libgcc-dev \
          libxml2-dev \
          libxml2-python \
