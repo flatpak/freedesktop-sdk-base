@@ -106,7 +106,6 @@ RDEPENDS_${PN} += "     \
          nss-dev \
          \
          libexif-dev \
-         libjpeg-turbo-dbg \
          libjpeg-turbo-dev \
          libogg-dev \
          libpng-dev \
