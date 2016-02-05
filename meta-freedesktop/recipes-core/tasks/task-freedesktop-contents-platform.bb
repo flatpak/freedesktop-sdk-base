@@ -92,6 +92,7 @@ RDEPENDS_${PN} += "\
          expat \
          json-c \
          libxml2 \
+         libxml2-python \
          libxslt \
          \
          cyrus-sasl \
