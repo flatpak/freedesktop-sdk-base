@@ -69,6 +69,7 @@ RDEPENDS_${PN} += "\
          libssl \
          libtasn1 \
          gpgme \
+         gnupg \
          \
          libexif \
          libjpeg-turbo \

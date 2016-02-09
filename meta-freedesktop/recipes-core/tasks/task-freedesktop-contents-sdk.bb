@@ -134,7 +134,6 @@ RDEPENDS_${PN} += "     \
          openssl-dev \
          libassuan-dev \
          gpgme-dev \
-         gnupg \
          \
          cyrus-sasl-dev \
          elfutils-binutils \
