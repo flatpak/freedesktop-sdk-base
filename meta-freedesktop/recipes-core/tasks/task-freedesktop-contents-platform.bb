@@ -70,6 +70,7 @@ RDEPENDS_${PN} += "\
          libtasn1 \
          gpgme \
          gnupg \
+         libgpgme-pthread11 \
          \
          libexif \
          libjpeg-turbo \
