@@ -41,7 +41,7 @@ ${FILE_REF_SDK}: metadata.sdk ${SDK_IMAGE}
 
 platform: ${FILE_REF_PLATFORM}
 
-${FILE_REF_PLATFORM}: metadata.platform ${PLATFORM_IMAGE}
+${FILE_REF_PLATFORM}: metadata.platform ${PLATFORM_IMAGE} repo
 	rm -rf platform
 	mkdir platform
 	(cd platform; tar --transform 's,^./usr,files,S' --transform 's,^./etc,files/etc,S' --exclude="./[!eu]*" -xvf ../${PLATFORM_IMAGE}  > /dev/null)
