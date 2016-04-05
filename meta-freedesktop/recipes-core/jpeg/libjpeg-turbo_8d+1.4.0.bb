@@ -23,8 +23,6 @@ RCONFLICTS_${PN} += "jpeg"
 
 inherit autotools pkgconfig
 
-EXTRA_OECONF = "--with-jpeg8 "
-
 PACKAGES =+ "jpeg-tools libturbojpeg"
 
 DESCRIPTION_jpeg-tools = "The jpeg-tools package includes client programs to access libjpeg functionality.  These tools allow for the compression, decompression, transformation and display of JPEG files and benchmarking of the libjpeg library."
@@ -36,4 +34,4 @@ INSANE_SKIP_libturbojpeg = "dev-so"
 BBCLASSEXTEND = "native"
 DEPENDS = "nasm-native"
 
-LEAD_SONAME = "libjpeg.so.8"
+LEAD_SONAME = "libjpeg.so.62"
