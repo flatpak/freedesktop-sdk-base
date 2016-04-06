@@ -8,7 +8,7 @@ libbz2_la_SOURCES = blocksort.c  \
                     compress.c   \
                     decompress.c \
                     bzlib.c
-libbz2_la_LDFLAGS = -version-info 7:0:6
+libbz2_la_LDFLAGS = -version-info 1:6:0
 
 bin_PROGRAMS = bzip2 bzip2recover
 
