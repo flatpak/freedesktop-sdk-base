@@ -49,8 +49,6 @@ RDEPENDS_${PN} += "     \
          make \
          pkgconfig \
          texinfo \
-         valgrind \
-         valgrind-dev \
          e2fsprogs-dev \
          libgomp-dev \
          libgomp-staticdev \
@@ -794,3 +792,7 @@ RDEPENDS_${PN} += "     \
          perl-module-vmsish \
          perl-module-xsloader \
 	 "
+
+# Some things are only available on x86
+RDEPENDS_${PN}_append_x86-64 = " valgrind valgrind-dev"
+RDEPENDS_${PN}_append_x86 =    " valgrind valgrind-dev"
