@@ -66,8 +66,10 @@ BBLAYERS ?= "${LAYERS}"
 EOF
 
 case "$architecture" in
-    i686) MACHINE="atom-pc";;
+    i686) MACHINE="qemux86";;
     x86_64) MACHINE="qemux86-64";;
+    aarch64) MACHINE="qemuarm64";;
+    armv7a) MACHINE="qemuarmv7a";;
     *) echo "Error: Unhandled architecture '$architecture'"; exit 1;;
 esac
 
