@@ -32,6 +32,7 @@ FILES_libturbojpeg = "${libdir}/libturbojpeg.so"
 INSANE_SKIP_libturbojpeg = "dev-so"
 
 BBCLASSEXTEND = "native"
-DEPENDS = "nasm-native"
+DEPENDS_append_x86-64 = " nasm-native"
+DEPENDS_append_x86    = " nasm-native"
 
 LEAD_SONAME = "libjpeg.so.62"
