@@ -19,7 +19,6 @@ RDEPENDS_${PN} += "     \
          diffutils \
          file \
          patch \
-         rpm \
          strace \
          \
          autoconf \
@@ -152,9 +151,6 @@ RDEPENDS_${PN} += "     \
          libxslt-dev \
          popt-dev \
          readline-dev \
-         \
-         python-smartpm \
-         smartpm \
          \
          perl-dev \
          perl-module-anydbm-file \
