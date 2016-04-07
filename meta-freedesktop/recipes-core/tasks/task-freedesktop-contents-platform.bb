@@ -54,6 +54,7 @@ RDEPENDS_${PN} += "\
          which \
          util-linux-uuidgen \
          util-linux-getopt \
+         file \
          \
          bzip2 \
          gzip \
@@ -64,6 +65,7 @@ RDEPENDS_${PN} += "\
          xz \
          zip \
          \
+         nss \
          gnutls \
          libgcrypt \
          libssl \
