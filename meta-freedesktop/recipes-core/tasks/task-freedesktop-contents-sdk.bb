@@ -93,6 +93,7 @@ RDEPENDS_${PN} += "     \
          db-dev \
          icu-dev \
          krb5-dev \
+         libverto-dev \
          acl-dev \
          attr-dev \
          libcap-bin \

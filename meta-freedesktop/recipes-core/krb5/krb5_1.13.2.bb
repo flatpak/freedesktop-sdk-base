@@ -15,7 +15,7 @@ HOMEPAGE = "http://web.mit.edu/Kerberos/"
 SECTION = "console/network"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${S}/../NOTICE;md5=f64248328d2d9928e1f04158b5243e7f"
-DEPENDS = "ncurses util-linux e2fsprogs e2fsprogs-native"
+DEPENDS = "ncurses util-linux e2fsprogs e2fsprogs-native libverto"
 
 inherit autotools-brokensep binconfig perlnative
 
@@ -45,7 +45,7 @@ PACKAGECONFIG[keyutils] = "--enable-keyutils,--disable-keyutils,keyutils"
 PACKAGECONFIG[ldap] = "--with-ldap,--without-ldap,openldap"
 PACKAGECONFIG[readline] = "--with-readline,--without-readline,readline"
 
-EXTRA_OECONF += " --without-tcl --with-system-et --disable-rpath"
+EXTRA_OECONF += " --without-tcl --with-system-et --with-system-verto --disable-rpath"
 CACHED_CONFIGUREVARS += "krb5_cv_attr_constructor_destructor=yes ac_cv_func_regcomp=yes \
                   ac_cv_printf_positional=yes ac_cv_file__etc_environment=yes \
                   ac_cv_file__etc_TIMEZONE=no"
