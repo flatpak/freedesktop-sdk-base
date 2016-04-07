@@ -7,8 +7,6 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3
 
 inherit freedesktop-contents
 
-IMAGE_FEATURES += "package-management"
-
 PACKAGE_INSTALL += "\
 		task-freedesktop-contents-platform \
 		task-freedesktop-contents-sdk \
