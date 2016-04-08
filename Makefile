@@ -48,5 +48,5 @@ ${FILE_REF_PLATFORM}: metadata.platform ${PLATFORM_IMAGE}
 	(cd platform; tar --transform 's,^./usr,files,S' --transform 's,^./etc,files/etc,S' --exclude="./[!eu]*" -xvf ../${PLATFORM_IMAGE}  > /dev/null)
 	cp metadata.platform platform/metadata
 	ostree commit ${COMMIT_ARGS} ${GPG_ARGS} --branch=${REF_PLATFORM}  -s "build of ${HASH}" platform
-	ostree summary -u --repo=repo$ {GPG_ARGS}
+	ostree summary -u --repo=repo ${GPG_ARGS}
 	rm -rf platform
