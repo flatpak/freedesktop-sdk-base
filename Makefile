@@ -3,7 +3,7 @@ builddir = $(CURDIR)
 
 NULL=
 ARCH=x86_64
-VERSION=1.4
+VERSION=1.5
 HASH:=$(shell git rev-parse HEAD)
 IMAGEDIR=images/${ARCH}
 SDK_IMAGE=${IMAGEDIR}/freedesktop-contents-sdk-${ARCH}-${HASH}.tar.gz
