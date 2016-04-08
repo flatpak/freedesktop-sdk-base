@@ -1,4 +1,4 @@
 [Runtime]
 name=org.freedesktop.BasePlatform
-runtime=org.freedesktop.BasePlatform/x86_64/1.2
-sdk=org.freedesktop.BaseSdk/x86_64/1.2
+runtime=org.freedesktop.BasePlatform/x86_64/1.4
+sdk=org.freedesktop.BaseSdk/x86_64/1.4
