@@ -1,0 +1,4 @@
+[Runtime]
+name=org.freedesktop.BasePlatform
+runtime=org.freedesktop.BasePlatform/@@ARCH@@/@@VERSION@@
+sdk=org.freedesktop.BaseSdk/@@ARCH@@/@@VERSION@@
