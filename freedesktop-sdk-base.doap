@@ -5,7 +5,7 @@
          xmlns="http://usefulinc.com/ns/doap#">
 
   <name xml:lang="en">freedesktop-sdk-base</name>
-  <shortdesc xml:lang="en">xdg-app sdk base</shortdesc>
+  <shortdesc xml:lang="en">Flatpak sdk base</shortdesc>
   <homepage rdf:resource="https://wiki.gnome.org/Projects/SandboxedApps" />
 
   <maintainer>
