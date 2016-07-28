@@ -29,6 +29,7 @@ RDEPENDS_${PN} += "\
          libatomic-ops \
          popt \
          util-linux-libuuid \
+         util-linux-libmount \
          libpcre \
          libcomerr \
          \
