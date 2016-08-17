@@ -18,8 +18,8 @@ PACKAGECONFIG[msgcat-curses] = "--with-libncurses-prefix=${STAGING_LIBDIR}/..,--
 
 LDFLAGS_prepend_libc-uclibc = " -lrt -lpthread "
 
-SRC_URI[md5sum] = "87c4ab267c4dce8a75db5d057bb3c92f"
-SRC_URI[sha256sum] = "5386d2a40500295783c6a52121adcf42a25519e2d23675950619c9e69558c23f"
+SRC_URI[md5sum] = "7ad5c90e32ac6828de955a0432ab4a7c"
+SRC_URI[sha256sum] = "3da4f6bd79685648ecf46dab51d66fcdddc156f41ed07e580a696a38ac61d48f"
 
 inherit autotools texinfo
 
