@@ -19,6 +19,8 @@ builddir = $(CURDIR)
 NULL=
 HASH:=$(shell git rev-parse HEAD)
 IMAGEDIR=images/${ARCH}
+SDK_MANIFEST=${IMAGEDIR}/freedesktop-contents-sdk-${ARCH}-${HASH}.manifest
+PLATFORM_MANIFEST=${IMAGEDIR}/freedesktop-contents-platform-${ARCH}-${HASH}.manifest
 SDK_IMAGE=${IMAGEDIR}/freedesktop-contents-sdk-${ARCH}-${HASH}.tar.gz
 PLATFORM_IMAGE=${IMAGEDIR}/freedesktop-contents-platform-${ARCH}-${HASH}.tar.gz
 IMAGES= ${SDK_IMAGE} ${PLATFORM_IMAGE}
@@ -47,6 +49,7 @@ ${FILE_REF_SDK}: metadata.sdk.in ${SDK_IMAGE}
 	rm -rf sdk
 	mkdir sdk
 	(cd sdk; tar --transform 's,^./usr,files,S' --transform 's,^./etc,files/etc,S' --exclude="./[!eu]*" -xvf ../${SDK_IMAGE}  > /dev/null)
+	cp ${SDK_MANIFEST} sdk/files/manifest.base
 	$(call subst-metadata,metadata.sdk.in,sdk/metadata)
 	ostree commit ${COMMIT_ARGS} ${GPG_ARGS} --branch=${REF_SDK}  -s "build of ${HASH}" sdk
 	ostree summary -u --repo=${REPO} ${GPG_ARGS}
@@ -59,6 +62,7 @@ ${FILE_REF_PLATFORM}: metadata.platform.in ${PLATFORM_IMAGE}
 	rm -rf platform
 	mkdir platform
 	(cd platform; tar --transform 's,^./usr,files,S' --transform 's,^./etc,files/etc,S' --exclude="./[!eu]*" -xvf ../${PLATFORM_IMAGE}  > /dev/null)
+	cp ${PLATFORM_MANIFEST} platform/files/manifest.base
 	$(call subst-metadata,metadata.platform.in,platform/metadata)
 	ostree commit ${COMMIT_ARGS} ${GPG_ARGS} --branch=${REF_PLATFORM}  -s "build of ${HASH}" platform
 	ostree summary -u --repo=${REPO} ${GPG_ARGS}
