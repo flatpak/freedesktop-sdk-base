@@ -50,6 +50,10 @@ ${FILE_REF_SDK}: metadata.sdk.in ${SDK_IMAGE}
 	mkdir sdk
 	(cd sdk; tar --transform 's,^./usr,files,S' --transform 's,^./etc,files/etc,S' --exclude="./[!eu]*" -xvf ../${SDK_IMAGE}  > /dev/null)
 	cp ${SDK_MANIFEST} sdk/files/manifest.base
+	echo "Removing stale python files"
+	find sdk -type f -name '*.pyc' -exec sh -c 'test "$$1" -ot "$${1%c}"' -- {} \; -print -delete # Remove stale 2.7 .pyc files
+	find sdk -type f -name '*.pyo' -exec sh -c 'test "$$1" -ot "$${1%o}"' -- {} \; -print -delete # Remove stale 2.7 .pyc files
+	find sdk -type d -name "__pycache__" -print -delete # Remove all 3.x pyc files (pain in the ass to do only stale, and we currently have none of these)
 	$(call subst-metadata,metadata.sdk.in,sdk/metadata)
 	ostree commit ${COMMIT_ARGS} ${GPG_ARGS} --branch=${REF_SDK}  -s "build of ${HASH}" sdk
 	ostree summary -u --repo=${REPO} ${GPG_ARGS}
@@ -63,6 +67,10 @@ ${FILE_REF_PLATFORM}: metadata.platform.in ${PLATFORM_IMAGE}
 	mkdir platform
 	(cd platform; tar --transform 's,^./usr,files,S' --transform 's,^./etc,files/etc,S' --exclude="./[!eu]*" -xvf ../${PLATFORM_IMAGE}  > /dev/null)
 	cp ${PLATFORM_MANIFEST} platform/files/manifest.base
+	echo "Removing stale python files"
+	find platform -type f -name '*.pyc' -exec sh -c 'test "$$1" -ot "$${1%c}"' -- {} \; -print -delete # Remove stale 2.7 .pyc files
+	find platform -type f -name '*.pyo' -exec sh -c 'test "$$1" -ot "$${1%o}"' -- {} \; -print -delete # Remove stale 2.7 .pyc files
+	find platform -type d -name "__pycache__" -print -delete # Remove all 3.x pyc files (pain in the ass to do only stale, and we currently have none of these)
 	$(call subst-metadata,metadata.platform.in,platform/metadata)
 	ostree commit ${COMMIT_ARGS} ${GPG_ARGS} --branch=${REF_PLATFORM}  -s "build of ${HASH}" platform
 	ostree summary -u --repo=${REPO} ${GPG_ARGS}
