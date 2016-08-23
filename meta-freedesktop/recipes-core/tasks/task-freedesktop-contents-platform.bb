@@ -88,6 +88,7 @@ RDEPENDS_${PN} += "\
          tiff \
          libflac \
          speex \
+         speexdsp \
          libsamplerate0 \
          \
          icu \
