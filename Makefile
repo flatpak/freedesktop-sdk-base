@@ -8,7 +8,7 @@ REPO   ?= repo
 #   $2 = the output to create
 define subst-metadata
 	@echo -n "Generating ${2}... ";		\
-	sed -e 's/@@ARCH@@/${ARCH}/g' 		\
+	sed -e 's/@@ARCH@@/${ARCH}/g'		\
 	    -e 's/@@VERSION@@/${VERSION}/g'	\
 	   ${1} > ${2}.tmp && mv ${2}.tmp ${2} || exit 1;
 	@echo "Done.";
