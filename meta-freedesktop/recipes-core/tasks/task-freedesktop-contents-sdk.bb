@@ -795,4 +795,4 @@ RDEPENDS_${PN} += "     \
 
 # Some things are only available on x86
 RDEPENDS_${PN}_append_x86-64 = " valgrind valgrind-dev libasan-staticdev libubsan-staticdev liblsan-staticdev libtsan-staticdev"
-RDEPENDS_${PN}_append_x86 =    " valgrind valgrind-dev libasan-staticdev libubsan-staticdev liblsan-staticdev libtsan-staticdev"
+RDEPENDS_${PN}_append_x86 =    " valgrind valgrind-dev libasan-staticdev libubsan-staticdev"
