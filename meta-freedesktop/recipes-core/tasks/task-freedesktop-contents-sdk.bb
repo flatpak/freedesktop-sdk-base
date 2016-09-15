@@ -35,6 +35,10 @@ RDEPENDS_${PN} += "     \
          g++-symlinks \
          gcc \
          gcc-symlinks \
+         libasan-staticdev \
+         libubsan-staticdev \
+         liblsan-staticdev \
+         libtsan-staticdev \
          gcov \
          gdb \
          gettext \
