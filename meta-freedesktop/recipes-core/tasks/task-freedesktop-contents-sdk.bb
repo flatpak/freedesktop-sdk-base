@@ -28,6 +28,7 @@ RDEPENDS_${PN} += "     \
          bison \
          ccache \
          cmake \
+         ninja \
          cpp \
          cpp-symlinks \
          flex \
