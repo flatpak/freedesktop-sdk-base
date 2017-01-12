@@ -73,3 +73,7 @@ ${FILE_REF_PLATFORM}: metadata.platform.in ${PLATFORM_IMAGE}
 	ostree commit ${COMMIT_ARGS} ${GPG_ARGS} --branch=${REF_PLATFORM}  -s "build of ${HASH}" platform
 	ostree summary -u --repo=${REPO} ${GPG_ARGS}
 	rm -rf platform
+
+sandboxed:
+	flatpak-builder --force-clean  app org.freedesktop.Builder.json
+	flatpak build app make all

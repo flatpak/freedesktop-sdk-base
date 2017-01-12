@@ -1,0 +1,91 @@
+{
+    "app-id": "org.freedesktop.Builder",
+    "runtime": "org.freedesktop.Sdk",
+    "runtime-version": "1.4",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "/usr/bin/sh",
+    "finish-args": [
+        "--talk-name=org.freedesktop.Flatpak",
+        "--share=network",
+        "--filesystem=host",
+        "--filesystem=/var/lib/flatpak",
+        "--allow=devel"
+    ],
+    "build-options" : {
+        "cflags": "-O2 -g",
+        "cxxflags": "-O2 -g",
+        "env": {
+            "MOUNT_FUSE_PATH": "../tmp/",
+            "V": "1"
+        }
+    },
+    "cleanup": ["*.la", "*.a"],
+    "modules": [
+        {
+            "name": "libfuse",
+            "cleanup": [ "/bin" ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/libfuse/libfuse/releases/download/fuse_2_9_5/fuse-2.9.5.tar.gz",
+                    "sha256": "579f371cc5ffc1afca7057512bf7d52988a9ede57859a7c55e5b9f72435cdbb5"
+                }
+            ]
+        },
+        {
+            "name": "ostree",
+            "config-opts": ["--disable-man"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/ostreedev/ostree/releases/download/v2016.15/ostree-2016.15.tar.xz",
+                    "sha256": "430178680bd0842dcfab66b780324f9e3cfa460799eec53166fa069e3396ecbd"
+                }
+            ]
+        },
+        {
+            "name": "flatpak",
+            "config-opts": ["--disable-documentation",
+                            "--disable-seccomp",
+                            "--disable-sandboxed-triggers",
+                            "--disable-system-helper"],
+            "cleanup": [ "/etc/profile.d",
+                         "/libexec",
+                         "/lib/systemd",
+                         "/share/dbus-1/interfaces/org.freedesktop.*",
+                         "/share/dbus-1/services/org.freedesktop.*",
+                         "/share/gdm" ],
+            "post-install": [
+                /* These are needed for the triggers */
+                "cp /usr/bin/update-mime-database /app/bin",
+                "cp /usr/bin/update-desktop-database /app/bin"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/flatpak/flatpak/releases/download/0.8.0/flatpak-0.8.0.tar.xz",
+                    "sha256": "5b082065c9921308305845f99b0facbc9b85a93e3d7553fd238824190294aacd"
+                }
+            ]
+        },
+        {
+            "name": "diffstat",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://invisible-island.net/datafiles/release/diffstat.tar.gz",
+                    "sha256": "25359e0c27183f997b36c9202583b5dc2df390c20e22a92606af4bf7856a55ee"
+                }
+            ]
+        },
+        {
+            "name": "wget",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://ftp.gnu.org/gnu/wget/wget-1.18.tar.xz",
+                    "sha256": "b5b55b75726c04c06fe253daec9329a6f1a3c0c1878e3ea76ebfebc139ea9cc1"
+                }
+            ]
+        }
+    ]
+}
