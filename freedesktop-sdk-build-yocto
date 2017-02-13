@@ -67,7 +67,7 @@ EOF
 
 case "$architecture" in
     i386) MACHINE="qemux86";;
-    x86_64) MACHINE="qemux86-64";;
+    x86_64) MACHINE="qemugenericx86-64";;
     arm) MACHINE="qemuarmv7a";;
     aarch64) MACHINE="qemuarm64";;
     *) echo "Error: Unhandled architecture '$architecture'"; exit 1;;
