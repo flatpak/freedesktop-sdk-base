@@ -36,9 +36,12 @@ RDEPENDS_${PN} += "     \
          g++-symlinks \
          gcc \
          gcc-symlinks \
+         glibc-staticdev \
+         libstdc++-staticdev \
          gcov \
          gdb \
          gettext \
+         gettext-staticdev \
          git \
          git-perltools \
          git-bash-completion \
@@ -95,8 +98,10 @@ RDEPENDS_${PN} += "     \
          libverto-dev \
          acl-dev \
          attr-dev \
+         attr-staticdev \
          libcap-bin \
          libcap-dev \
+         libcap-staticdev \
          libsqlite3-dev \
          libstdc++-dev \
          libstdc++-staticdev \
@@ -122,7 +127,9 @@ RDEPENDS_${PN} += "     \
          bzip2-dev \
          libarchive-dev \
          xz-dev \
+         xz-staticdev \
          zlib-dev \
+         zlib-staticdev \
          \
          gnutls-dev \
          libgcrypt-dev \
