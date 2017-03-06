@@ -3,5 +3,5 @@ SRC_URI += "\
         file://usercustomize.py \
         "
 do_install_append() {
-        install -m 0755 ${WORKDIR}/usercustomize.py ${D}${libdir}/python3.4/usercustomize.py
+        install -m 0755 ${WORKDIR}/usercustomize.py ${D}${libdir}/python3.5/usercustomize.py
 }
