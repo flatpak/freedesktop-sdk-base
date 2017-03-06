@@ -19,10 +19,10 @@ builddir = $(CURDIR)
 NULL=
 HASH:=$(shell git rev-parse HEAD)
 IMAGEDIR=images/${ARCH}
-SDK_MANIFEST=${IMAGEDIR}/freedesktop-contents-sdk-${ARCH}-${HASH}.manifest
-PLATFORM_MANIFEST=${IMAGEDIR}/freedesktop-contents-platform-${ARCH}-${HASH}.manifest
-SDK_IMAGE=${IMAGEDIR}/freedesktop-contents-sdk-${ARCH}-${HASH}.tar.gz
-PLATFORM_IMAGE=${IMAGEDIR}/freedesktop-contents-platform-${ARCH}-${HASH}.tar.gz
+SDK_MANIFEST=${IMAGEDIR}/freedesktop-contents-sdk-${VERSION}-${ARCH}-${HASH}.manifest
+PLATFORM_MANIFEST=${IMAGEDIR}/freedesktop-contents-platform-${VERSION}-${ARCH}-${HASH}.manifest
+SDK_IMAGE=${IMAGEDIR}/freedesktop-contents-sdk-${VERSION}-${ARCH}-${HASH}.tar.gz
+PLATFORM_IMAGE=${IMAGEDIR}/freedesktop-contents-platform-${VERSION}-${ARCH}-${HASH}.tar.gz
 IMAGES= ${SDK_IMAGE} ${PLATFORM_IMAGE}
 REF_PLATFORM=runtime/org.freedesktop.BasePlatform/${ARCH}/${VERSION}
 REF_SDK=runtime/org.freedesktop.BaseSdk/${ARCH}/${VERSION}
@@ -38,7 +38,7 @@ ${IMAGES} allimages:
 	rm -rf build/*/tmp-glibc/deploy/images/*/freedesktop-contents-*.tar.gz
 	git submodule update --init
 	mkdir -p build/${ARCH}
-	./freedesktop-sdk-build-yocto ${srcdir}/ ${builddir}/build/ ${ARCH} ${HASH}
+	./freedesktop-sdk-build-yocto ${srcdir}/ ${builddir}/build/ ${ARCH} ${HASH} ${VERSION}
 
 .PHONY: sdk platform
 
