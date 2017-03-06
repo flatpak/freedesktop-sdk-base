@@ -26,6 +26,7 @@ RDEPENDS_${PN} += "     \
          binutils \
          binutils-symlinks \
          bison \
+         bison-dev \
          ccache \
          cmake \
          ninja \
