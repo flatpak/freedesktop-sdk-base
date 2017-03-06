@@ -13,7 +13,6 @@ PR = "1"
 RDEPENDS_${PN} += "\
          glibc-gconvs \
          glibc-binaries \
-         glibc-localedatas \
          glibc-charmaps \
          glibc-utils \
          glibc-locale \

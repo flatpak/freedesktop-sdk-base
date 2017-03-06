@@ -39,6 +39,7 @@ RDEPENDS_${PN} += "     \
          gcc-symlinks \
          glibc-staticdev \
          libstdc++-staticdev \
+         glibc-localedatas \
          gcov \
          gdb \
          gettext \
