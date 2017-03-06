@@ -1,5 +1,5 @@
 # Override the arch with `make ARCH=i386`
-VERSION = 1.5
+VERSION = 1.6
 ARCH   ?= $(shell flatpak --default-arch)
 REPO   ?= repo
 
