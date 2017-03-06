@@ -8,7 +8,7 @@ REPO   ?= repo
 #   $2 = the output to create
 define subst-metadata
 	@echo -n "Generating ${2}... ";		\
-	sed -e 's/@@ARCH@@/${ARCH}/g' 		\
+	sed -e 's/@@ARCH@@/${ARCH}/g'		\
 	    -e 's/@@VERSION@@/${VERSION}/g'	\
 	   ${1} > ${2}.tmp && mv ${2}.tmp ${2} || exit 1;
 	@echo "Done.";
@@ -73,3 +73,7 @@ ${FILE_REF_PLATFORM}: metadata.platform.in ${PLATFORM_IMAGE}
 	ostree commit ${COMMIT_ARGS} ${GPG_ARGS} --branch=${REF_PLATFORM}  -s "build of ${HASH}" platform
 	ostree summary -u --repo=${REPO} ${GPG_ARGS}
 	rm -rf platform
+
+sandboxed:
+	flatpak-builder --force-clean  app org.freedesktop.Builder.json
+	flatpak build app make all

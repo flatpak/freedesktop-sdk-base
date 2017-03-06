@@ -30,7 +30,7 @@ RDEPENDS_${PN} += "\
          popt \
          util-linux-libuuid \
          util-linux-libmount \
-         libpcre \
+         libpcre libpcrecpp libpcreposix \
          libcomerr \
          \
          acl \

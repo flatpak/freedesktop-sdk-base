@@ -65,9 +65,11 @@ OSTREE_SRCDIR = "${srcdir}"
 BBLAYERS ?= "${LAYERS}"
 EOF
 
+EXTRA=
+
 case "$architecture" in
     i386) MACHINE="qemux86";;
-    x86_64) MACHINE="qemux86-64";;
+    x86_64) MACHINE="qemux86-64"; EXTRA='DEFAULTTUNE = "x86-64"';;
     arm) MACHINE="qemuarmv7a";;
     aarch64) MACHINE="qemuarm64";;
     *) echo "Error: Unhandled architecture '$architecture'"; exit 1;;
@@ -90,6 +92,7 @@ PATCHRESOLVE = "noop"
 SSTATE_DIR = "${SSTATE_DIR}"
 DL_DIR = "${DL_DIR}"
 INHERIT += "rm_work"
+${EXTRA}
 EOF
     mv ${localconf}.tmp ${localconf}
 fi

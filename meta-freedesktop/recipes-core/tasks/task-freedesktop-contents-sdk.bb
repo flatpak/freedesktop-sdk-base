@@ -28,6 +28,7 @@ RDEPENDS_${PN} += "     \
          bison \
          ccache \
          cmake \
+         ninja \
          cpp \
          cpp-symlinks \
          flex \
@@ -35,9 +36,12 @@ RDEPENDS_${PN} += "     \
          g++-symlinks \
          gcc \
          gcc-symlinks \
+         glibc-staticdev \
+         libstdc++-staticdev \
          gcov \
          gdb \
          gettext \
+         gettext-staticdev \
          git \
          git-perltools \
          git-bash-completion \
@@ -94,8 +98,10 @@ RDEPENDS_${PN} += "     \
          libverto-dev \
          acl-dev \
          attr-dev \
+         attr-staticdev \
          libcap-bin \
          libcap-dev \
+         libcap-staticdev \
          libsqlite3-dev \
          libstdc++-dev \
          libstdc++-staticdev \
@@ -121,7 +127,9 @@ RDEPENDS_${PN} += "     \
          bzip2-dev \
          libarchive-dev \
          xz-dev \
+         xz-staticdev \
          zlib-dev \
+         zlib-staticdev \
          \
          gnutls-dev \
          libgcrypt-dev \
@@ -794,5 +802,5 @@ RDEPENDS_${PN} += "     \
 	 "
 
 # Some things are only available on x86
-RDEPENDS_${PN}_append_x86-64 = " valgrind valgrind-dev"
-RDEPENDS_${PN}_append_x86 =    " valgrind valgrind-dev"
+RDEPENDS_${PN}_append_x86-64 = " valgrind valgrind-dev libasan-staticdev libubsan-staticdev liblsan-staticdev libtsan-staticdev nasm yasm"
+RDEPENDS_${PN}_append_x86 =    " valgrind valgrind-dev libasan-staticdev libubsan-staticdev nasm yasm"
