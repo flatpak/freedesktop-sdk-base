@@ -126,7 +126,6 @@ RDEPENDS_${PN} += "\
          tzdata-right \
          glibc-gconvs \
          glibc-charmaps \
-         glibc-binaries \
          iso-codes-locale-af \
          iso-codes-locale-am \
          iso-codes-locale-ar \
