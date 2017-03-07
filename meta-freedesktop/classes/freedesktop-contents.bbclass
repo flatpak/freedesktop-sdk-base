@@ -85,6 +85,24 @@ EOF
 	    done
 	done
 
+        # Move debuginfo
+        if test -d ${IMAGE_ROOTFS}/usr/bin/.debug; then
+	  mkdir -p ${IMAGE_ROOTFS}/usr/lib/debug/usr/bin
+	  mv ${IMAGE_ROOTFS}/usr/bin/.debug/* ${IMAGE_ROOTFS}/usr/lib/debug/usr/bin
+	  rmdir ${IMAGE_ROOTFS}/usr/bin/.debug
+	fi
+        if test -d ${IMAGE_ROOTFS}/usr/lib/.debug; then
+	  mkdir -p ${IMAGE_ROOTFS}/usr/lib/debug/usr/lib
+	  mv ${IMAGE_ROOTFS}/usr/lib/.debug/* ${IMAGE_ROOTFS}/usr/lib/debug/usr/lib
+	  rmdir ${IMAGE_ROOTFS}/usr/lib/.debug
+	fi
+        if test -d ${IMAGE_ROOTFS}/usr/src/debug; then
+	  mkdir -p ${IMAGE_ROOTFS}/usr/lib/debug/source
+	  mv ${IMAGE_ROOTFS}/usr/src/debug/* ${IMAGE_ROOTFS}/usr/lib/debug/source/
+	  rmdir ${IMAGE_ROOTFS}/usr/src/debug
+	  ln -s ../lib/debug/source ${IMAGE_ROOTFS}/usr/src/debug
+        fi
+
 	# Undo libattr/libacl weirdness
 	rm -f ${IMAGE_ROOTFS}/lib/libacl.a
 	rm -f ${IMAGE_ROOTFS}/lib/libacl.la
