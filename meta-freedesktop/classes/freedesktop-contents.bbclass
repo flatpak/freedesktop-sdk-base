@@ -29,30 +29,13 @@ fakeroot prepare_rootfs () {
         echo ${WORKDIR}
         echo ${IMAGE_ROOTFS}
 
-	# Delete all of the legacy sysvinit scripts; we use systemd
-	rm -rf ${IMAGE_ROOTFS}/etc/init.d
-	rm -rf ${IMAGE_ROOTFS}/etc/rc*.d
+	# Adjustments for /etc -> {/var,/run} here
+	ln -sf /run/resolv.conf ${IMAGE_ROOTFS}/etc/resolv.conf
 
-	# Empty out the default passwd file
-	rm -f ${IMAGE_ROOTFS}/etc/passwd ${IMAGE_ROOTFS}/etc/group \
-	  ${IMAGE_ROOTFS}/etc/shadow ${IMAGE_ROOTFS}/etc/gshadow
-	# root has no password by default
-	cat > ${IMAGE_ROOTFS}/etc/passwd << EOF
-root::0:0:root:/root:/bin/sh
-EOF
-	cat > ${IMAGE_ROOTFS}/etc/group << EOF
-root:x:0:root
-EOF
-	touch ${IMAGE_ROOTFS}/etc/shadow ${IMAGE_ROOTFS}/etc/gshadow
-	chmod 0600 ${IMAGE_ROOTFS}/etc/shadow ${IMAGE_ROOTFS}/etc/gshadow
-	# Delete backup files
-	rm -f ${IMAGE_ROOTFS}/etc/passwd- ${IMAGE_ROOTFS}/etc/group- \
-	  ${IMAGE_ROOTFS}/etc/shadow- ${IMAGE_ROOTFS}/etc/gshadow-
-
-	# Add "altfiles" NSS module to /etc/nsswitch.conf
-	sed -i -e '/^passwd:/cpasswd: files altfiles' \
-	       -e '/^group:/cgroup: files altfiles' \
-               ${IMAGE_ROOTFS}/etc/nsswitch.conf
+	# Install defaults
+	rm -f ${IMAGE_ROOTFS}/etc/localtime
+	ln -s ../usr/share/zoneinfo/Europe/London ${IMAGE_ROOTFS}/etc/localtime
+	echo LANG=\"en_US.UTF-8\" > ${IMAGE_ROOTFS}/etc/locale.conf
 
 	# Intersection of defaults between RHEL and Debian
 	cat > ${IMAGE_ROOTFS}/etc/hosts <<EOF
@@ -60,27 +43,13 @@ EOF
 ::1         localhost6 ip6-localhost
 EOF
 
-	# Ensure we're set up for systemd
-        mkdir -p ${IMAGE_ROOTFS}/etc/pam.d
-        echo "session optional pam_systemd.so" >> ${IMAGE_ROOTFS}/etc/pam.d/common-session 
-
-	# Adjustments for /etc -> {/var,/run} here
-	ln -sf /run/resolv.conf ${IMAGE_ROOTFS}/etc/resolv.conf
-
-	# Fix un-world-readable config file; no idea why this isn't.
-	if test -f ${IMAGE_ROOTFS}/etc/securetty; then
-          chmod a+r ${IMAGE_ROOTFS}/etc/securetty
-        fi
-
 	# Clear out the default fstab; everything we need right now is mounted
 	# in the initramfs.
 	cat < /dev/null > ${IMAGE_ROOTFS}/etc/fstab
 
-	# Install defaults
-	rm -f ${IMAGE_ROOTFS}/etc/localtime
-	ln -s ../usr/share/zoneinfo/Europe/London ${IMAGE_ROOTFS}/etc/localtime
-	echo LANG=\"en_US.UTF-8\" > ${IMAGE_ROOTFS}/etc/locale.conf
-	
+	# Remove su; it'll never work
+	rm -f ${IMAGE_ROOTFS}/bin/su
+
 	# Do UsrMove for bin and sbin
         cd ${IMAGE_ROOTFS}/bin
         for x in *; do
@@ -117,8 +86,6 @@ EOF
 	done
 
 	# Undo libattr/libacl weirdness
-	#rm -f ${IMAGE_ROOTFS}/lib/lib{acl,attr}.{a,la}
-	#rm -f ${IMAGE_ROOTFS}/usr/lib/lib{acl,attr}.so
 	rm -f ${IMAGE_ROOTFS}/lib/libacl.a
 	rm -f ${IMAGE_ROOTFS}/lib/libacl.la
 	rm -f ${IMAGE_ROOTFS}/lib/libattr.a
@@ -157,9 +124,6 @@ EOF
 	rmdir ${IMAGE_ROOTFS}/usr/sbin
 	ln -s bin ${IMAGE_ROOTFS}/usr/sbin
 
-	# Remove su; we only support pkexec
-	rm -f ${IMAGE_ROOTFS}/bin/su
-
 	# /lib64/ld-linux-x86-64.so.2 is part of the x86-64 ABI that at least llvm requires
 	if [ "${TARGET_ARCH}" = "x86_64" ];then
 	  mkdir -p ${IMAGE_ROOTFS}/usr/lib64
@@ -168,9 +132,6 @@ EOF
 
 	# Remove all .la files
 	find ${IMAGE_ROOTFS}/usr/lib -name \*.la -delete
-
-	# And ensure systemd is /sbin/init
-	ln -s ../lib/systemd/systemd ${IMAGE_ROOTFS}/usr/bin/init
 
 	rm -rf ${WORKDIR}/contents
 	mkdir -m 0755 ${WORKDIR}/contents
@@ -181,27 +142,8 @@ EOF
 	    mkdir -m 0755 $d
 	done
 
-	# Special ostree mount
-	mkdir -m 0755 sysroot
-
-	# Some FHS targets; these all live in /var
-	ln -s var/opt opt
-	ln -s var/srv srv
-	ln -s var/mnt mnt
-	ln -s var/roothome root
-
-	# This one is dynamic, so just lives in /run
-	ln -s run/media media
-
-	# Special OSTree link, so it's /ostree both on
-	# the real disk and inside the chroot.
-	ln -s sysroot/ostree ostree
-
 	# /tmp is an empty mountpoint
 	mkdir tmp
-	
-	# By default, /home -> var/home -> ../sysroot/home
-	ln -s var/home home
 
         # Resolve alternatives of the form "toolname.package => toolname", such as
         # e.g. cat.coreutils -> cat (but not ones of the form busybox -> cat).
@@ -223,27 +165,17 @@ EOF
 
 	# These are the only directories we take from the OE build
         mv ${IMAGE_ROOTFS}/usr .
-	# Except /usr/local -> ../var/usrlocal
-	rm usr/local -rf
-	ln -s ../var/usrlocal usr/local
         mv ${IMAGE_ROOTFS}/etc .
-        mv ${IMAGE_ROOTFS}/boot .
+
 	# Also move the toplevel compat links
         mv ${IMAGE_ROOTFS}/lib .
         mv ${IMAGE_ROOTFS}/bin .
         mv ${IMAGE_ROOTFS}/sbin .
 
-        if ${@bb.utils.contains('IMAGE_FEATURES', 'package-management', 'true', 'false', d)}; then
-           mkdir -p var/lib
-           mv ${IMAGE_ROOTFS}/var/lib/rpm ./var/lib
-        fi
-
 	# Ok, let's globally fix permissions in the OE content;
 	# everything is root owned, all directories are u=rwx,g=rx,og=rx.
-	chown -R -h 0:0 usr etc boot
-	for x in usr etc boot; do
-	    find $x  -type d -exec chmod u=rwx,g=rx,og=rx "{}" \;
-	done
+	chown -R -h 0:0 usr
+        find usr -type d -exec chmod u=rwx,g=rx,og=rx "{}" \;
 
 	rm -rf ${IMAGE_ROOTFS}
 	mv ${WORKDIR}/contents ${IMAGE_ROOTFS}
@@ -263,5 +195,5 @@ fakeroot remove_symlinks () {
         rm -rf ${DEPLOY_DIR_IMAGE}/${IMAGE_BASENAME}-${MACHINE}.tar.gz
 }
 
-IMAGE_PREPROCESS_COMMAND += "remove_symlinks;"
-IMAGE_POSTPROCESS_COMMAND += "prepare_rootfs;"
+ROOTFS_PREPROCESS_COMMAND += "remove_symlinks;"
+ROOTFS_POSTPROCESS_COMMAND += "prepare_rootfs;"
