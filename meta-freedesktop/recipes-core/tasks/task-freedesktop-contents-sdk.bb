@@ -83,17 +83,21 @@ RDEPENDS_${PN} += "     \
          ruby \
          \
          gdbm-dev \
+         gdbm-dbg \
          gettext-dev \
          libffi-dev \
+         libffi-dbg \
          libpam-dev \
          libssp-dev \
          libssp-staticdev \
          util-linux-libuuid-dev \
          util-linux-bash-completion \
          libpcre-dev \
+         libpcre-dbg \
          \
          cracklib-dev \
          curl-dev \
+         curl-dbg \
          db-dev \
          icu-dev \
          krb5-dev \
@@ -128,38 +132,53 @@ RDEPENDS_${PN} += "     \
          \
          bzip2-dev \
          libarchive-dev \
+         libarchive-dbg \
          xz-dev \
+         xz-dbg \
          xz-staticdev \
          zlib-dev \
+         zlib-dbg \
          zlib-staticdev \
          \
          gnutls-dev \
+         gnutls-dbg \
          libgcrypt-dev \
+         libgcrypt-dbg \
          libgpg-error-dev \
+         libgpg-error-dbg \
          libtasn1-bin \
          libtasn1-dev \
          nettle-dev \
          openssl-dev \
+         openssl-dbg \
          libassuan-dev \
          gpgme-dev \
+         gpgme-dbg \
          \
          cyrus-sasl-dev \
          elfutils-binutils \
          elfutils-dev \
          expat-dev \
+         expat-dbg \
          gmp-dev \
          iso-codes-dev \
          json-c-dev \
          lcms-dev \
+         lcms-dbg \
          libatomic-ops-dev \
+         libatomic-ops-dbg \
          libatomic-ops-staticdev \
          libgcc-dev \
+         gcc-runtime-dbg \
          libxml2-dev \
+         libxml2-dbg \
          libxml2-python \
          libxslt-bin \
          libxslt-dev \
          popt-dev \
+         popt-dbg \
          readline-dev \
+         readline-dbg \
          \
          perl-dev \
          perl-modules \
