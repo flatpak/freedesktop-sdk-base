@@ -14,6 +14,8 @@ DEPENDS += "task-freedesktop-contents-platform makedevs-native \
 	"
 do_rootfs[umask] = "022"
 
+IMAGE_FEATURES += "read-only-rootfs"
+
 IMAGE_FSTYPES = "tar.gz"
 
 def freedesktop_get_devtable_list(d):
