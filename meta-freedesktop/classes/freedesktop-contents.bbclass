@@ -145,7 +145,7 @@ EOF
 	# /lib64/ld-linux-x86-64.so.2 is part of the x86-64 ABI that at least llvm requires
 	if [ "${TARGET_ARCH}" = "x86_64" ];then
 	  mkdir -p ${IMAGE_ROOTFS}/usr/lib64
-	  ln -s /usr/lib/ld-linux-x86-64.so.2 ${IMAGE_ROOTFS}/usr/lib64/ld-linux-x86-64.so.2
+	  ln -s ../lib/ld-linux-x86-64.so.2 ${IMAGE_ROOTFS}/usr/lib64/ld-linux-x86-64.so.2
 	fi
 
 	# Remove all .la files
@@ -197,21 +197,6 @@ EOF
 
 	rm -rf ${IMAGE_ROOTFS}
 	mv ${WORKDIR}/contents ${IMAGE_ROOTFS}
-
-	IMAGE_NAME_NODATE=${IMAGE_BASENAME}-${MACHINE}.tar.gz
-	DEST=${WORKDIR}/${IMAGE_NAME_NODATE}
-	(cd ${IMAGE_ROOTFS} && tar -zcv -f ${DEST} .)
-
-	mv ${DEST} ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME_NODATE}
 }
 
-fakeroot remove_symlinks () {
-	set -x
-        echo ${DEPLOY_DIR_IMAGE}
-        echo ${WORKDIR}
-        echo ${IMAGE_ROOTFS}
-        rm -rf ${DEPLOY_DIR_IMAGE}/${IMAGE_BASENAME}-${MACHINE}.tar.gz
-}
-
-ROOTFS_PREPROCESS_COMMAND += "remove_symlinks;"
 ROOTFS_POSTPROCESS_COMMAND += "prepare_rootfs;"
