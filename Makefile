@@ -35,7 +35,6 @@ COMMIT_ARGS=--repo=${REPO} --owner-uid=0 --owner-gid=0 --no-xattrs
 
 ${IMAGES} allimages:
 	rm -f ${IMAGEDIR}/freedesktop-contents-*.tar.gz # Remove all old images to make space
-	rm -rf build/*/tmp-glibc/deploy/images/*/freedesktop-contents-*.tar.gz
 	git submodule update --init
 	mkdir -p build/${ARCH}
 	./freedesktop-sdk-build-yocto ${srcdir}/ ${builddir}/build/ ${ARCH} ${HASH} ${VERSION}
