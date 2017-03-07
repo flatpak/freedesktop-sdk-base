@@ -79,16 +79,17 @@ esac
 
 mkdir -p ${workdir}/${architecture}/conf
 localconf=${workdir}/${architecture}/conf/local.conf
-if ! grep -q "DISTRO.*freedesktop" ${localconf}; then
+if ! grep -q "BUILDTAG1" ${localconf}; then
     numcpus=$(( $(getconf _NPROCESSORS_ONLN) / 2 + 1 ))
     cat > ${localconf}.tmp <<EOF
+# BUILDTAG1
 PARALLEL_MAKE = "-j ${numcpus}"
 BB_NUMBER_THREADS = "${numcpus}"
 LAYER_CONF_VERSION = "6"
 CONF_VERSION = "1"
 MACHINE = "${MACHINE}"
 DISTRO = "freedesktop"
-USER_CLASSES = ""
+USER_CLASSES = "image-prelink"
 PACKAGE_CLASSES = "package_rpm"
 PATCHRESOLVE = "noop"
 SSTATE_DIR = "${SSTATE_DIR}"
