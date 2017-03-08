@@ -184,6 +184,8 @@ EOF
 	# These are the only directories we take from the OE build
         mv ${IMAGE_ROOTFS}/usr .
         mv ${IMAGE_ROOTFS}/etc .
+        # Need this for the rpmdb
+        mv ${IMAGE_ROOTFS}/var .
 
 	# Also move the toplevel compat links
         mv ${IMAGE_ROOTFS}/lib .
