@@ -66,6 +66,7 @@ RDEPENDS_${PN} += "\
          zip \
          \
          nss \
+         p11-kit \
          gnutls \
          libgcrypt \
          libssl \

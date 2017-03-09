@@ -140,6 +140,8 @@ RDEPENDS_${PN} += "     \
          zlib-dbg \
          zlib-staticdev \
          \
+         p11-kit-dev \
+         p11-kit-dbg \
          gnutls-dev \
          gnutls-dbg \
          libgcrypt-dev \
