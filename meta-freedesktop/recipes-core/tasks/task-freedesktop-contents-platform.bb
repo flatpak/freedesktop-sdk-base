@@ -23,6 +23,8 @@ RDEPENDS_${PN} += "\
          ncurses \
          nspr \
          gmp \
+         mpfr \
+         libmpc \
          libgomp \
          libatomic \
          libatomic-ops \

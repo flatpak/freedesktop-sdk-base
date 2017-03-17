@@ -163,6 +163,8 @@ RDEPENDS_${PN} += "     \
          expat-dev \
          expat-dbg \
          gmp-dev \
+         libmpc-dev \
+         mpfr-dev \
          iso-codes-dev \
          json-c-dev \
          lcms-dev \
