@@ -31,7 +31,7 @@ FILE_REF_SDK=${REPO}/refs/heads/${REF_SDK}
 
 all: ${FILE_REF_PLATFORM} ${FILE_REF_SDK}
 
-COMMIT_ARGS=--repo=${REPO} --owner-uid=0 --owner-gid=0 --no-xattrs
+COMMIT_ARGS=--repo=${REPO} --canonical-permissions
 
 ${IMAGES} allimages:
 	rm -f ${IMAGEDIR}/freedesktop-contents-*.tar.gz # Remove all old images to make space
