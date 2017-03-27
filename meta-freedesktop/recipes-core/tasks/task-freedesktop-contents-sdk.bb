@@ -74,9 +74,11 @@ RDEPENDS_${PN} += "     \
          python-dev \
          python-modules \
          python-misc \
+         python-2to3 \
          python3-dev \
          python3-modules \
          python3-misc \
+         python3-2to3 \
          python-mako \
          python3-pip \
          python-pip \
