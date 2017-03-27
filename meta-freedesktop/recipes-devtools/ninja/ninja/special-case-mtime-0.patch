@@ -1,0 +1,27 @@
+From 9fb1922583f98200d6fc141a575bde459c9b8927 Mon Sep 17 00:00:00 2001
+From: Patrick Griffis <tingping@tingping.se>
+Date: Mon, 20 Mar 2017 21:46:42 -0400
+Subject: [PATCH] Work around mtime being set to 0 sometimes
+
+---
+ src/disk_interface.cc | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/disk_interface.cc b/src/disk_interface.cc
+index 1b4135f..46625b1 100644
+--- a/src/disk_interface.cc
++++ b/src/disk_interface.cc
+@@ -185,6 +185,11 @@ TimeStamp RealDiskInterface::Stat(const string& path, string* err) const {
+     *err = "stat(" + path + "): " + strerror(errno);
+     return -1;
+   }
++  // Some users (Flatpak) set mtime to 0, this should be harmless
++  // and avoids conflicting with our return value of 0 meaning
++  // that it doesn't exist.
++  if (st.st_mtime == 0)
++    return 1;
+   return st.st_mtime;
+ #endif
+ }
+-- 
+2.9.3
