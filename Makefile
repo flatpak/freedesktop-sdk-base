@@ -54,7 +54,7 @@ ${FILE_REF_SDK}: metadata.sdk.in ${SDK_IMAGE}
 	find sdk -type f -name '*.pyo' -exec sh -c 'test "$$1" -ot "$${1%o}"' -- {} \; -print -delete # Remove stale 2.7 .pyc files
 	$(call subst-metadata,metadata.sdk.in,sdk/metadata)
 	ostree commit ${COMMIT_ARGS} ${GPG_ARGS} --branch=${REF_SDK}  -s "build of ${HASH}" sdk
-	ostree summary -u --repo=${REPO} ${GPG_ARGS}
+	flatpak build-update-repo ${GPG_ARGS} ${REPO}
 	rm -rf sdk
 
 platform: ${FILE_REF_PLATFORM}
@@ -70,7 +70,7 @@ ${FILE_REF_PLATFORM}: metadata.platform.in ${PLATFORM_IMAGE}
 	find platform -type f -name '*.pyo' -exec sh -c 'test "$$1" -ot "$${1%o}"' -- {} \; -print -delete # Remove stale 2.7 .pyc files
 	$(call subst-metadata,metadata.platform.in,platform/metadata)
 	ostree commit ${COMMIT_ARGS} ${GPG_ARGS} --branch=${REF_PLATFORM}  -s "build of ${HASH}" platform
-	ostree summary -u --repo=${REPO} ${GPG_ARGS}
+	flatpak build-update-repo ${GPG_ARGS} ${REPO}
 	rm -rf platform
 
 sandboxed:
