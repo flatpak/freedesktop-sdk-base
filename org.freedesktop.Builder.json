@@ -38,8 +38,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/ostreedev/ostree/releases/download/v2016.15/ostree-2016.15.tar.xz",
-                    "sha256": "430178680bd0842dcfab66b780324f9e3cfa460799eec53166fa069e3396ecbd"
+                    "url": "https://github.com/ostreedev/ostree/releases/download/v2017.9/libostree-2017.9.tar.xz",
+                    "sha256": "4a2f31b600f5f95436fe62e2adb0c5c79e44112caf88773c8a6defdeecce62e8"
                 }
             ]
         },
@@ -62,8 +62,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/flatpak/flatpak/releases/download/0.8.0/flatpak-0.8.0.tar.xz",
-                    "sha256": "5b082065c9921308305845f99b0facbc9b85a93e3d7553fd238824190294aacd"
+                    "url": "https://github.com/flatpak/flatpak/releases/download/0.9.7/flatpak-0.9.7.tar.xz",
+                    "sha256": "f43a77cd0b99d465bf1939e43b5593339028b5fb431e567f9735aadbaea695c8"
                 }
             ]
         },
