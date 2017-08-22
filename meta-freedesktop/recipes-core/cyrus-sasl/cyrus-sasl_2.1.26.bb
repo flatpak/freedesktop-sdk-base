@@ -9,6 +9,8 @@ SRC_URI = "ftp://ftp.cyrusimap.org/cyrus-sasl/cyrus-sasl-${PV}.tar.gz \
 	file://debian_patches_0014_avoid_pic_overwrite.diff \
 	"
 
+INSANE_SKIP_${PN} += "dev-so"
+
 inherit autotools pkgconfig
 
 EXTRA_OECONF += "--with-dblib=berkeley \
@@ -40,8 +42,8 @@ SRC_URI[sha256sum] = "8fbc5136512b59bb793657f36fadda6359cae3b08f01fd16b3d406f134
 
 PACKAGES =+ "${PN}-bin"
 
-FILES_${PN}           += "${libdir}/sasl2/*.so.*"
+FILES_${PN}           += "${libdir}/sasl2/*.so*"
 FILES_${PN}-bin       += "${bindir}"
-FILES_${PN}-dev       += "${libdir}/sasl2/*.so ${libdir}/sasl2/*.la"
+FILES_${PN}-dev       += "${libdir}/sasl2/*.la"
 FILES_${PN}-dbg       += "${libdir}/sasl2/.debug"
 FILES_${PN}-staticdev += "${libdir}/sasl2/*.a"
