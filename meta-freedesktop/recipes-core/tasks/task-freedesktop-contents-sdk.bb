@@ -68,6 +68,8 @@ RDEPENDS_${PN} += "     \
          sgml-common \
          docbook-xml-dtd4 \
          docbook-xsl-stylesheets \
+         man \
+         man-pages \
          \
          libxml-parser-perl \
          libxml-parser-perl-dev \
