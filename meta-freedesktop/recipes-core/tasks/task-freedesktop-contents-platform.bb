@@ -89,6 +89,7 @@ RDEPENDS_${PN} += "\
          libtheora \
          tiff \
          libflac \
+         libflac++ \
          speex \
          speexdsp \
          libsamplerate0 \
