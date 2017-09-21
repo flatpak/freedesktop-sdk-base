@@ -15,6 +15,8 @@ SRC_URI[sha256sum] = "306d67908625675f8e188d37a81fbfafdf5068b09d9aa52702b6fbe601
 # sysroots/armv4t-oe-linux-gnueabi/usr/lib/libvpx.a(vpx_encoder.c.o)(.text+0xc4): unresolvable R_ARM_THM_CALL relocation against symbol `memcpy@@GLIBC_2.4'
 ARM_INSTRUCTION_SET = "arm"
 
+DEPENDS = "yasm-native"
+
 CFLAGS += "-fPIC"
 
 export CC
@@ -39,6 +41,9 @@ CONFIGUREOPTS = " \
     --prefix=${prefix} \
     --libdir=${libdir} \
 "
+
+CONFIGUREOPTS_append_x86-64 =" --as=yasm"
+CONFIGUREOPTS_append_x86 =" --as=yasm"
 
 do_configure() {
     ${S}/configure ${CONFIGUREOPTS}
