@@ -23,6 +23,9 @@ export LD = "${CC}"
 VPXTARGET_armv5te = "armv5te-linux-gcc"
 VPXTARGET_armv6 = "armv6-linux-gcc"
 VPXTARGET_armv7a = "armv7-linux-gcc"
+VPXTARGET_x86-64 = "x86_64-linux-gcc"
+VPXTARGET_x86 = "x86-linux-gcc"
+VPXTARGET_aarch64 = "armv8-linux-gcc"
 VPXTARGET ?= "generic-gnu"
 
 CONFIGUREOPTS = " \
