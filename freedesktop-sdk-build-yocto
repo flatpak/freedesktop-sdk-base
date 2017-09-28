@@ -95,6 +95,7 @@ PATCHRESOLVE = "noop"
 SSTATE_DIR = "${SSTATE_DIR}"
 DL_DIR = "${DL_DIR}"
 INHERIT += "rm_work"
+BUILD_ARCH = "${architecture}"
 ${EXTRA}
 EOF
     mv ${localconf}.tmp ${localconf}
