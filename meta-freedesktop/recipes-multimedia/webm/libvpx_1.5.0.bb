@@ -11,10 +11,6 @@ SRC_URI += "http://storage.googleapis.com/downloads.webmproject.org/releases/web
 SRC_URI[md5sum] = "49e59dd184caa255886683facea56fca"
 SRC_URI[sha256sum] = "306d67908625675f8e188d37a81fbfafdf5068b09d9aa52702b6fbe601c76797"
 
-# ffmpeg links with this and fails 
-# sysroots/armv4t-oe-linux-gnueabi/usr/lib/libvpx.a(vpx_encoder.c.o)(.text+0xc4): unresolvable R_ARM_THM_CALL relocation against symbol `memcpy@@GLIBC_2.4'
-ARM_INSTRUCTION_SET = "arm"
-
 DEPENDS = "yasm-native"
 
 CFLAGS += "-fPIC"
