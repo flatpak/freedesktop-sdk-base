@@ -16,6 +16,7 @@
         "cxxflags": "-O2 -g",
         "env": {
             "MOUNT_FUSE_PATH": "../tmp/",
+            "INIT_D_PATH": "/app/etc/init.d/",
             "V": "1"
         }
     },
