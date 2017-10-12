@@ -33,6 +33,7 @@ RDEPENDS_${PN} += "\
          util-linux-libmount \
          libpcre libpcrecpp libpcreposix \
          libcomerr \
+         netbase \
          \
          acl \
          attr \
