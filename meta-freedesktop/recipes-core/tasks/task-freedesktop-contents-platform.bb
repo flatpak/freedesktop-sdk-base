@@ -80,6 +80,7 @@ RDEPENDS_${PN} += "\
          \
          libexif \
          libjpeg-turbo \
+         libturbojpeg \
          libogg \
          libpng \
          libsndfile1 \
