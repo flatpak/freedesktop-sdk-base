@@ -113,8 +113,10 @@ RDEPENDS_${PN} += "\
          \
          python-modules \
          python-misc \
+         python-setuptools \
          python3-modules \
          python3-misc \
+         python3-setuptools \
          \
          tzdata \
          tzdata-africa \
