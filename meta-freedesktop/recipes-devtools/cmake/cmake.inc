@@ -16,6 +16,7 @@ SRC_URI = "https://cmake.org/files/v${CMAKE_MAJOR_VERSION}/cmake-${PV}.tar.gz \
            file://qt4-fail-silent.patch \
            file://avoid-gcc-warnings-with-Wstrict-prototypes.patch \
            file://0001-KWIML-tests-Remove-format-security-from-flags.patch \
+           file://cmake-nolib64.patch \
            "
 
 SRC_URI[md5sum] = "79bd7e65cd81ea3aa2619484ad6ff25a"
