@@ -73,6 +73,7 @@ RDEPENDS_${PN} += "     \
          \
          libxml-parser-perl \
          libxml-parser-perl-dev \
+         perl-doc \
          perl-misc \
          perl-modules \
          python-dev \
