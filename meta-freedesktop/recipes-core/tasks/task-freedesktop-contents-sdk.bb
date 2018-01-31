@@ -88,6 +88,7 @@ RDEPENDS_${PN} += "     \
          python3-pip \
          python-pip \
          ruby \
+	 ruby-dev \
          \
          gdbm-dev \
          gdbm-dbg \
