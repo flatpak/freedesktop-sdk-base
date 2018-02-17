@@ -6,7 +6,7 @@ inherit autotools gettext pkgconfig upstream-version-is-even gtk-doc
 
 DEPENDS = "libtasn1 libffi"
 
-SRC_URI = "http://p11-glue.freedesktop.org/releases/${BP}.tar.gz"
+SRC_URI = "https://people.freedesktop.org/~alexl/${BP}.tar.gz"
 SRC_URI[md5sum] = "738af2442331fc22f440df9bee9b062a"
 SRC_URI[sha256sum] = "ba726ea8303c97467a33fca50ee79b7b35212964be808ecf9b145e9042fdfaf0"
 
