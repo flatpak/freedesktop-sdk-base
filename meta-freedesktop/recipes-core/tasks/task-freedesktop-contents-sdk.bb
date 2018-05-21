@@ -151,6 +151,7 @@ RDEPENDS_${PN} += "     \
          p11-kit-dev \
          p11-kit-dbg \
          gnutls-dev \
+         gnutls-bin \
          gnutls-dbg \
          libgcrypt-dev \
          libgcrypt-dbg \
