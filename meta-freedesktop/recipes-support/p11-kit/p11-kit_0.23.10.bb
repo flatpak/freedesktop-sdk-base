@@ -6,11 +6,11 @@ inherit autotools gettext pkgconfig upstream-version-is-even gtk-doc
 
 DEPENDS = "libtasn1 libffi"
 
-SRC_URI = "https://people.freedesktop.org/~alexl/${BP}.tar.gz"
-SRC_URI[md5sum] = "738af2442331fc22f440df9bee9b062a"
-SRC_URI[sha256sum] = "ba726ea8303c97467a33fca50ee79b7b35212964be808ecf9b145e9042fdfaf0"
+SRC_URI = "https://github.com/p11-glue/p11-kit/releases/download/0.23.10/p11-kit-0.23.10.tar.gz"
+SRC_URI[md5sum] = "0692fe6245e8d2ca5cc0b49b813b0be2"
+SRC_URI[sha256sum] = "f9212a3f225ef543e13fae9945527d66c0cbb67246320035dd94fab2bce5ae43"
 
-EXTRA_OECONF = "--without-trust-paths"
+EXTRA_OECONF = "--with-trust-paths=/etc/ssl/certs/ca-certificates.crt"
 
 # This recipe does not use the standard gtk-doc m4 macros, and so the ./configure flags
 # that control gtk-doc build are non-standard
