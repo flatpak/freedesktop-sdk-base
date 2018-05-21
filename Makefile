@@ -74,5 +74,4 @@ ${FILE_REF_PLATFORM}: metadata.platform.in ${PLATFORM_IMAGE}
 	rm -rf platform
 
 sandboxed:
-	flatpak-builder --force-clean  app org.freedesktop.Builder.json
-	flatpak build app make all
+	./build.sh ${ARCH} ${REPO}
