@@ -74,4 +74,4 @@ ${FILE_REF_PLATFORM}: metadata.platform.in ${PLATFORM_IMAGE}
 	rm -rf platform
 
 sandboxed:
-	./build.sh ${ARCH} ${REPO}
+	flatpak run --command=make org.flatpak.Builder all ARCH="${ARCH}" REPO="${REPO}"
