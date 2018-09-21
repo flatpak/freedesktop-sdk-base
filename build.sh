@@ -11,7 +11,10 @@ flatpak --user install -y flathub org.flatpak.Builder
 
 echo Building SdkBase
 flatpak run --command=make org.flatpak.Builder all ARCH="${ARCH}" REPO="${REPO}"
+build_exit_code=$?
 
 # Remove builds, they are kind of large, and we rebuild this seldom
 echo Removing builds
 rm -rf images build
+
+exit "$build_exit_code"
